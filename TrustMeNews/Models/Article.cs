@@ -11,7 +11,7 @@ namespace TrustMeNews.Models
     public class Article
     {
         [JsonPropertyName("id")]
-        public string Id { get { return "dsada"; } }
+        public string Id { get; set; }
         
         [JsonPropertyName("sectionId")]
         public string Genre { get; set; }
@@ -25,9 +25,6 @@ namespace TrustMeNews.Models
         [JsonPropertyName("fields.standfirst")]
         public string  Headline { get; set; }
 
-        public override string ToString()
-        {
-            return System.Text.Json.JsonSerializer.Serialize<Article>(this);
-        }
+        public override string ToString() => JsonSerializer.Serialize<Article>(this);
     }
 }
