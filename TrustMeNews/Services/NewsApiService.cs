@@ -25,6 +25,23 @@ namespace TrustMeNews.Services
             httpClient.Dispose();
 
             return root.response.results;
+        }        
+        public async Task<IEnumerable<Genre>> SendGenreRequest(string path)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(path);
+            GenreRoot root = null;
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(path).Result;
+
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                root = await httpResponseMessage.Content.ReadAsAsync<GenreRoot>();
+            }
+
+            httpClient.Dispose();
+
+            return root.response.results;
         }
+
     }
 }
