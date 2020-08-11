@@ -1,10 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace TrustMeNews.Models
 {
+    public class Fields
+    {
+        public string headline { get; set; }
+        public string standfirst { get; set; }
+
+        [JsonPropertyName("byline")]
+        public string Author { get; set; }
+
+        public string main { get; set; }
+        public string body { get; set; }
+        public string thumbnail { get; set; }
+
+        public override string ToString()
+        {
+            return System.Text.Json.JsonSerializer.Serialize<Fields>(this);
+        }
+
+    }
+
     public class Result
     {
         public string id { get; set; }
@@ -13,23 +33,20 @@ namespace TrustMeNews.Models
         public string sectionName { get; set; }
         public DateTime webPublicationDate { get; set; }
         public string webTitle { get; set; }
-        public string webUrl { get; set; }
-        public string apiUrl { get; set; }
-        public bool isHosted { get; set; }
-        public string pillarId { get; set; }
-        public string pillarName { get; set; }
+
+        public Fields fields { get; set; }
+
+        public override string ToString()
+        {
+            return System.Text.Json.JsonSerializer.Serialize<Result>(this);
+        }
+
+
     }
 
     public class Response
     {
-        public string status { get; set; }
-        public string userTier { get; set; }
-        public int total { get; set; }
-        public int startIndex { get; set; }
-        public int pageSize { get; set; }
-        public int currentPage { get; set; }
-        public int pages { get; set; }
-        public string orderBy { get; set; }
+        
         public List<Result> results { get; set; }
     }
 

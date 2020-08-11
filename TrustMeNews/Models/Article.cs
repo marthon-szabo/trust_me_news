@@ -10,13 +10,16 @@ namespace TrustMeNews.Models
 {
     public class Article
     {
-        public string Status { get { return "dsada"; } }
-        
-        public string UserTier { get; set; }
-        
-        public int Total{ get; set; }
+        public string headline { get; set; }
+        public string standfirst { get; set; }
 
-        public List<ArticleDTO> results { get; set; }
+        [JsonPropertyName("byline")]
+        public string Author { get; set; }
+
+        public string main { get; set; }
+        public string body { get; set; }
+        public string thumbnail { get; set; }
+
 
         public override string ToString()
         {
