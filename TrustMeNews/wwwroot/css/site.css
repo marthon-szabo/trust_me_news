@@ -12,12 +12,18 @@ a.navbar-brand {
     width: 430px;
 }
 
+.title {
+    text-decoration: double;
+}
+
 .articles {
     display: inline-flex;
 }
 
 .article {
     margin-left: 8px;
+    text-align: -webkit-center;
+    display: inline-block;
 }
 
 .words {
