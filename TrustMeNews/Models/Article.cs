@@ -10,20 +10,13 @@ namespace TrustMeNews.Models
 {
     public class Article
     {
-        [JsonPropertyName("id")]
-        public string Id { get { return "dsada"; } }
+        public string Status { get { return "dsada"; } }
         
-        [JsonPropertyName("sectionId")]
-        public string Genre { get; set; }
+        public string UserTier { get; set; }
         
-        [JsonPropertyName("webApplicationName")]
-        public DateTime PublicationTime { get; set; }
+        public int Total{ get; set; }
 
-        [JsonPropertyName("webTitle")]
-        public string Title { get; set; }
-
-        [JsonPropertyName("fields.standfirst")]
-        public string  Headline { get; set; }
+        public List<ArticleDTO> results { get; set; }
 
         public override string ToString()
         {
