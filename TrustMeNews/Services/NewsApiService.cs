@@ -8,8 +8,11 @@ using TrustMeNews.Models;
 
 namespace TrustMeNews.Services
 {
-    public class NewsApiService
+    public class NewsApiService : INewsApi
     {
+        public const string API_KEY = "api-key=d0bd9a0e-8101-4525-8604-4ad01023d10c";
+
+
         public async Task<IEnumerable<Result>> SendRequest(string path)
         {
             HttpClient httpClient = new HttpClient();
