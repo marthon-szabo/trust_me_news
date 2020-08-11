@@ -10,21 +10,21 @@ namespace TrustMeNews.Services
 {
     public class NewsApiService
     {
-        public async Task<IEnumerable<Result>> SendRequest(string path)
+        public async Task<IEnumerable<Article>> SendRequest(string path)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(path);
-            Root article = null;
+            Root root = null;
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(path).Result;
 
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-                article = await httpResponseMessage.Content.ReadAsAsync<Root>();
+                root = await httpResponseMessage.Content.ReadAsAsync<Root>();
             }
 
             httpClient.Dispose();
 
-            return article.response.results;
+            return root.response.articles;
         }
     }
 }

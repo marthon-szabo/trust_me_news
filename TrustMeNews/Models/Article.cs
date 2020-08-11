@@ -1,29 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Text.Json;
-
 
 namespace TrustMeNews.Models
 {
     public class Article
     {
-        public string headline { get; set; }
-        public string standfirst { get; set; }
+        public string id { get; set; }
+        public string type { get; set; }
+        public string sectionId { get; set; }
+        public string sectionName { get; set; }
+        public DateTime webPublicationDate { get; set; }
+        public string webTitle { get; set; }
 
-        [JsonPropertyName("byline")]
-        public string Author { get; set; }
+        public Field fields { get; set; }
 
-        public string main { get; set; }
-        public string body { get; set; }
-        public string thumbnail { get; set; }
+        public override string ToString() => JsonSerializer.Serialize<Article>(this);
+    }
 
+    public class Response
+    {
+        public List<Article> articles { get; set; }
+    }
 
-        public override string ToString()
-        {
-            return System.Text.Json.JsonSerializer.Serialize<Article>(this);
-        }
+    public class Root
+    {
+        public Response response { get; set; }
     }
 }
