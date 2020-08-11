@@ -10,7 +10,7 @@ namespace TrustMeNews.Services
 {
     public class NewsApiService
     {
-        public async Task<IEnumerable<Article>> SendRequest(string path)
+        public async Task<IEnumerable<Result>> SendRequest(string path)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(path);
@@ -24,7 +24,7 @@ namespace TrustMeNews.Services
 
             httpClient.Dispose();
 
-            return root.response.articles;
+            return root.response.results;
         }
     }
 }

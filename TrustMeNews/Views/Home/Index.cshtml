@@ -9,7 +9,7 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    @foreach (Article article in newsApiService.SendRequest(apiKey).GetAwaiter().GetResult())
+    @foreach (Result article in newsApiService.SendRequest(apiKey).GetAwaiter().GetResult())
     {
        <p>@article.fields.ToString()</p>
 

@@ -4,8 +4,10 @@ using System.Text.Json;
 
 namespace TrustMeNews.Models
 {
-    public class Article
+    public class Result
     {
+        //ARTICLE
+
         public string id { get; set; }
         public string type { get; set; }
         public string sectionId { get; set; }
@@ -15,12 +17,12 @@ namespace TrustMeNews.Models
 
         public Field fields { get; set; }
 
-        public override string ToString() => JsonSerializer.Serialize<Article>(this);
+        public override string ToString() => JsonSerializer.Serialize<Result>(this);
     }
 
     public class Response
     {
-        public List<Article> articles { get; set; }
+        public List<Result> results { get; set; }
     }
 
     public class Root
