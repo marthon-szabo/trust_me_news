@@ -12,14 +12,15 @@ a.navbar-brand {
     width: 430px;
 }
 
-.title {
-    text-decoration: double;
+.article:hover {
+    background-color: lightgrey;
 }
 
 .article {
-    width: 430px;
+    border-color: black;
+    width: 440px;
     height: auto;
-    margin-left: 8px;
+    margin-left: 4px;
     text-align: -webkit-center;
     display: inline-grid;
 }
