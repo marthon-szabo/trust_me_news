@@ -29,7 +29,7 @@
                         @foreach (Genre genre in newsApiService.SendGenreRequest(apiKey).GetAwaiter().GetResult())
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> @genre.webTitle</a>
+                                <a class="nav-link genre text-dark" asp-area="" asp-controller="Home" asp-action="Index"> @genre.webTitle</a>
                             </li>
                         }
                     </ul>

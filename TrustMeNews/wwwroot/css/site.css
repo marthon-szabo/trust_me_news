@@ -31,6 +31,10 @@ a.navbar-brand {
     justify-content: space-between;
 }
 
+.genre:hover {
+    background-color: indianred;
+}
+
 a {
     color: #0366d6;
 }
