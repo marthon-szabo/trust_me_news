@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 using System.Text.Json;
 
 
 namespace TrustMeNews.Models
 {
-    public class Article
+    public class Field
     {
         public string headline { get; set; }
         public string standfirst { get; set; }
@@ -20,10 +16,6 @@ namespace TrustMeNews.Models
         public string body { get; set; }
         public string thumbnail { get; set; }
 
-
-        public override string ToString()
-        {
-            return System.Text.Json.JsonSerializer.Serialize<Article>(this);
-        }
+        public override string ToString() => JsonSerializer.Serialize<Field>(this);
     }
 }
