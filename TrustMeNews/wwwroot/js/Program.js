@@ -2,4 +2,4 @@
 
 //SearchBarController(document.querySelector(".inpSearch"));
 
-document.querySelector(".inpSearch").addEventListener("input", (inp) => console.log(inp));
+document.querySelector(".inpSearch").addEventListener(InputEvent, () => console.log("dsadsa"));

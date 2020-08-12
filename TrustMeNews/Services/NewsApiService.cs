@@ -48,10 +48,10 @@ namespace TrustMeNews.Services
             return root.response.results;
         }
 
-        public void GetGenre(string sectionId)
-        {
-            genre = sectionId;
-        }
+        //public void GetGenre(string sectionId)
+        //{
+        //    genre = sectionId;
+        //}
 
     }
 }
