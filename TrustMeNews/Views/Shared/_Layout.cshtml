@@ -30,7 +30,7 @@
                         @foreach (Genre genre in newsApiService.SendGenreRequest(genreApiKey).GetAwaiter().GetResult())
                         {
                             <li class="nav-item">
-                                <a class="nav-link genre text-dark" data-genre="@genre.id">@genre.webTitle</a>
+                                <a class="nav-link genre text-dark" asp-controller="GenresApi">@genre.webTitle</a>
                             </li>
                         }
                     </ul>
