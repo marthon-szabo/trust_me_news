@@ -14,31 +14,30 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <script type="text/javascript" src="~/js/site.js" defer></script>
-    <script type="text/javascript" src="~/js/Program.js" defer></script>
+    <script type="text/javascript" src="~/js/Controller.js" defer></script>
+    <script type="text/javascript" src="~/js/app.js" defer></script>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <a class="navbar-brand text-dark" asp-area="" asp-controller="Home" asp-action="Index">TrustMeNews</a>
-                    <ul class="nav navbar-nav" style="display:contents">
+                <ul class="nav navbar-nav" style="display:contents">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                    @foreach (Genre genre in newsApiService.SendGenreRequest(genreApiKey).GetAwaiter().GetResult())
+                    {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link genre text-dark" asp-controller="GenresApi">@genre.webTitle</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        @foreach (Genre genre in newsApiService.SendGenreRequest(genreApiKey).GetAwaiter().GetResult())
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link genre text-dark" asp-controller="GenresApi">@genre.webTitle</a>
-                            </li>
-                        }
-                    </ul>
+                    }
+                </ul>
             </div>
-            <form method="get">
-                <input id="inpSearch" placeholder="Search content" asp-controller="SearchBar"/>
-            </form>
+            <input id="inpSearch" placeholder="Search content" asp-controller="SearchBar" />
         </nav>
     </header>
     <div class="container-fl">

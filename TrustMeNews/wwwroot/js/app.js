@@ -1,0 +1,1 @@
+﻿new Controller(document).sendRequest();
