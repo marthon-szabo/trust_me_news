@@ -29,7 +29,7 @@
 
     getArticle() {
         this.document.querySelectorAll(".article").forEach((article) => {
-            article.addEventListener("click", () => {
+            article.addEventListener("dblclick", () => {
                 var articleId = article.id;
                 $.ajax({
                     type: "GET",
