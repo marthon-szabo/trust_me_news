@@ -28,7 +28,17 @@ namespace TrustMeNews
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddSingleton<NewsApiService>();
+            services.AddSingleton<INewsApi, NewsApiService>();
+            services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "http://localhost:3000",
+                        builder =>
+                        {
+                            builder.WithOrigins("http://localhost:3000");
+                        }
+                    );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,9 +55,12 @@ namespace TrustMeNews
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors("http://localhost:3000");
 
             app.UseAuthorization();
 
@@ -56,7 +69,7 @@ namespace TrustMeNews
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                
+                endpoints.MapControllers();
             });
         }
     }
