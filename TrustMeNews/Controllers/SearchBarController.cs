@@ -19,11 +19,11 @@ namespace TrustMeNews.Controllers
             this.newsApiService = newsApiService;
         }
 
-        [HttpGet("{content}")]
+        [HttpGet]
         public async Task<IEnumerable<Result>> GetResultsByContent(string content)
         {
-            string apiEndpoint = $"https://content.guardianapis.com/sections?q={content}/{NewsApiService.API_KEY}";
 
+            string apiEndpoint = $"https://content.guardianapis.com/search?q={content}&{NewsApiService.API_KEY}";
             return await newsApiService.SendRequest(apiEndpoint);
         }
     }
