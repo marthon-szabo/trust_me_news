@@ -11,6 +11,5 @@ namespace TrustMeNews.Services
         {
             return null;
         }
-
     }
 }
