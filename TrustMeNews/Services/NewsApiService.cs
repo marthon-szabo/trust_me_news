@@ -28,10 +28,8 @@ namespace TrustMeNews.Services
             }
 
             httpClient.Dispose();
-            List<Result> results = new List<Result>();
-            root.response.results.ForEach(result => results.Add(result));
 
-            return results;
+            return root.response.results;
         }        
         public async Task<IEnumerable<Genre>> SendGenreRequest(string path)
         {
@@ -48,6 +46,11 @@ namespace TrustMeNews.Services
             httpClient.Dispose();
 
             return root.response.results;
+        }
+
+        public void GetGenre(string sectionId)
+        {
+            genre = sectionId;
         }
 
     }

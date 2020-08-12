@@ -1,6 +1,6 @@
 ﻿@using TrustMeNews.Services
 @{
-    string apiKey = "https://content.guardianapis.com/sections?api-key=d0bd9a0e-8101-4525-8604-4ad01023d10c";
+    string genreApiKey = "https://content.guardianapis.com/sections?api-key=d0bd9a0e-8101-4525-8604-4ad01023d10c";
     NewsApiService newsApiService = new NewsApiService();
 }
 
@@ -13,27 +13,27 @@
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <script src="~/js/Program.js" defer/>
+    <script type="text/javascript" src="~/js/site.js" defer></script>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <a class="navbar-brand text-dark" asp-area="" asp-controller="Home" asp-action="Index">TrustMeNews</a>
-                <ul class="nav navbar-nav" style="display:contents">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                    @foreach (Genre genre in newsApiService.SendGenreRequest(apiKey).GetAwaiter().GetResult())
-                    {
+                    <ul class="nav navbar-nav" style="display:contents">
                         <li class="nav-item">
-                            <a class="nav-link genre text-dark" asp-area="" asp-controller="Home" asp-action="Index"> @genre.webTitle</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                    }
-                </ul>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        @foreach (Genre genre in newsApiService.SendGenreRequest(genreApiKey).GetAwaiter().GetResult())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link genre text-dark" data-genre="@genre.id">@genre.webTitle</a>
+                            </li>
+                        }
+                    </ul>
             </div>
             <form method="get">
                 <input id="inpSearch" placeholder="Search content" asp-controller="SearchBar"/>
