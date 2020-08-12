@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using TrustMeNews.Models;
@@ -22,7 +23,6 @@ namespace TrustMeNews.Controllers
         [HttpGet]
         public async Task<IEnumerable<Result>> GetResultsByContent(string content)
         {
-
             string apiEndpoint = $"https://content.guardianapis.com/search?q={content}&{NewsApiService.API_KEY}";
             return await newsApiService.SendRequest(apiEndpoint);
         }

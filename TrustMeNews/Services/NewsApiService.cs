@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using TrustMeNews.Models;
@@ -30,7 +28,7 @@ namespace TrustMeNews.Services
             httpClient.Dispose();
 
             return root.response.results;
-        }        
+        }
         public async Task<IEnumerable<Genre>> SendGenreRequest(string path)
         {
             HttpClient httpClient = new HttpClient();
