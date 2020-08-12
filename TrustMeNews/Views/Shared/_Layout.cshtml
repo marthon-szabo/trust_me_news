@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/Program.js" defer/>
 </head>
 <body>
     <header>
@@ -35,7 +36,7 @@
                 </ul>
             </div>
             <form method="get">
-                <input placeholder="Search content" asp-controller="SearchBar"/>
+                <input id="inpSearch" placeholder="Search content" asp-controller="SearchBar"/>
             </form>
         </nav>
     </header>
