@@ -11,7 +11,9 @@ namespace TrustMeNews.Services
     public class NewsApiService : INewsApi
     {
         public const string API_KEY = "api-key=d0bd9a0e-8101-4525-8604-4ad01023d10c";
+        public string _api = "api";
 
+        public string Api { get { return _api; } }
 
         public async Task<IEnumerable<Result>> SendRequest(string path)
         {
@@ -45,6 +47,11 @@ namespace TrustMeNews.Services
 
             return root.response.results;
         }
+
+        //public void GetGenre(string sectionId)
+        //{
+        //    genre = sectionId;
+        //}
 
     }
 }
