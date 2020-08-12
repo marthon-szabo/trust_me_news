@@ -6,14 +6,6 @@
 
     apiLink;
 
-    sendData(link) {
-        $.ajax({
-            type: "POST",
-            url: "/section",
-            dataType: "string",
-            data: { section: link }
-        })
-    }
     sendRequest() {
         const sb = document.querySelector("#inpSearch");
         sb.addEventListener("keypress", (e) => {
@@ -27,6 +19,12 @@
         document.querySelectorAll(".genre").forEach((genre) => {
             genre.addEventListener("click", () => {
                 this.apiLink = genre.id;
+                $.ajax({
+                    type: "GET",
+                    url: "/section",
+                    dataType: "string",
+                    data: { section: apiLink }
+                });
                 console.log(genre.id);
             })
         })
