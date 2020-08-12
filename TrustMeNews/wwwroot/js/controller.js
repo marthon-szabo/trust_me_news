@@ -1,5 +1,4 @@
-﻿
-class Controller{
+﻿class Controller {
 
     constructor(document) {
         this.document = document;
@@ -13,6 +12,12 @@ class Controller{
             }
         });
     }
-    
 
+    getNewsBySection() {
+        document.querySelectorAll(".genre").forEach((genre) => {
+            genre.addEventListener("click", () => {
+                console.log(genre.id);
+            })
+        })
+    }
 }

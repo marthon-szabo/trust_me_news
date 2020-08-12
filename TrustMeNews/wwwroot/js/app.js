@@ -1,1 +1,3 @@
-﻿new Controller(document).sendRequest();
+﻿const controller = new Controller(document)
+controller.sendRequest();
+controller.getNewsBySection();

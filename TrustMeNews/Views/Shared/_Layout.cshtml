@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <script type="text/javascript" src="~/js/site.js" defer></script>
-    <script type="text/javascript" src="~/js/Controller.js" defer></script>
+    <script type="text/javascript" src="~/js/controller.js" defer></script>
     <script type="text/javascript" src="~/js/app.js" defer></script>
 </head>
 <body>
@@ -31,8 +31,8 @@
                         </li>
                         @foreach (Genre genre in newsApiService.SendGenreRequest(genreApiKey).GetAwaiter().GetResult())
                         {
-                            <li class="nav-item clikk">
-                                <a class="nav-link genre text-dark">@genre.webTitle</a>
+                            <li class="nav-item">
+                                <a class="nav-link genre text-dark" id="@genre.id">@genre.webTitle</a>
                             </li>
                         }
                     </ul>
