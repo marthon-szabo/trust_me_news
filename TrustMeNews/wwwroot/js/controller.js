@@ -16,13 +16,28 @@
     getNewsBySection() {
         document.querySelectorAll(".genre").forEach((genre) => {
             genre.addEventListener("click", () => {
-                var apiLink = genre.id;
+                var genreId = genre.id;
                 $.ajax({
                     type: "GET",
                     url: "/section",
                     dataType: "string",
-                    data: { section: apiLink }
+                    data: { section: genreId }
                 });
+            })
+        })
+    }
+
+    getArticle() {
+        this.document.querySelectorAll(".article").forEach((article) => {
+            article.addEventListener("click", () => {
+                var articleId = article.id;
+                $.ajax({
+                    type: "GET",
+                    url: "/article",
+                    dataType: "string",
+                    data: { article: articleId }
+                });
+                console.log(articleId);
             })
         })
     }
