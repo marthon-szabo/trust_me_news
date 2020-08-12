@@ -10,8 +10,6 @@ namespace TrustMeNews.Models
     {
         public string id { get; set; }
         public string webTitle { get; set; }
-        public string webUrl { get; set; }
-        public string apiUrl { get; set; }
 
         public override string ToString() => JsonSerializer.Serialize<Genre>(this);
 

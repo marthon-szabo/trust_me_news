@@ -10,6 +10,8 @@ namespace TrustMeNews.Services
 {
     public class NewsApiService
     {
+        private string genre;
+
         public async Task<IEnumerable<Result>> SendRequest(string path)
         {
             HttpClient httpClient = new HttpClient();
@@ -41,6 +43,11 @@ namespace TrustMeNews.Services
             httpClient.Dispose();
 
             return root.response.results;
+        }
+
+        public void GetGenre(string sectionId)
+        {
+            genre = sectionId;
         }
 
     }
