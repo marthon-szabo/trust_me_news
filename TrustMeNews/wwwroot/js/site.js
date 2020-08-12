@@ -10,4 +10,6 @@ function getNewsBySection() {
         apiKey = apiKey + "&section=" + genre.data.genre;
         console.log(apiKey);
     })
+
+    
 }
