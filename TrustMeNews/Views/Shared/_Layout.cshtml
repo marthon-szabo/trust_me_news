@@ -37,7 +37,9 @@
                     }
                 </ul>
             </div>
-            <input id="inpSearch" placeholder="Search content" asp-controller="SearchBar" />
+            <form asp-page="/Views/Home/Result">
+                <input id="inpSearch" placeholder="Search content"  asp-controller="SearchBar" />
+            </form>
         </nav>
     </header>
     <div class="container-fl">
