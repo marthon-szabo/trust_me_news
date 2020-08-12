@@ -2,7 +2,7 @@
 
 export const ArticleContext = createContext();
 
-export function ArticleContextProvider() {
+export function ArticleContextProvider(props) {
     const [articles, setArticles] = useState([]);
 
     return (
