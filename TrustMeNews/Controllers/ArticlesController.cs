@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TrustMeNews.Models;
 using TrustMeNews.Services;
 
 namespace TrustMeNews.Controllers
@@ -21,11 +22,10 @@ namespace TrustMeNews.Controllers
         }
 
         [HttpGet("{articleId}")]
-        public void GetArticlesBySection(string articleId)
+        public async Task<IEnumerable<Result>> GetArticlesBySection(string articleId)
         {
-            string article = $"{articleId.First()}";
-            string articleApiKey = "https://content.guardianapis.com/" + article + "?{NewsApiService.API_KEY}&show-fields=all";
-            Debug.WriteLine(article);
+            string articleApiKey = $"https://content.guardianapis.com/{articleId}&{NewsApiService.API_KEY}&show-fields=all";
+            return await newsApiService.SendRequest(articleApiKey);
         }
 
     }
