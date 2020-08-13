@@ -19,10 +19,10 @@
                 var genreId = genre.id;
                 $.ajax({
                     type: "GET",
-                    url: "/section",
-                    dataType: "string",
-                    data: { section: genreId }
-                });
+                    url: `/section/${genreId}`,
+                    //dataType: "string",
+                    //data: { section: genreId }
+                }).then((resp) => console.log(resp));
             })
         })
     }
