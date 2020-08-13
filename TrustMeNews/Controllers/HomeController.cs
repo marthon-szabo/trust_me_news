@@ -14,7 +14,7 @@ namespace TrustMeNews.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly INewsApi newsApiService;
-        private readonly IEnumerable<Result> _results;
+        private List<Result> _results = new List<Result>();
 
         public HomeController(ILogger<HomeController> logger, INewsApi newsApi)
         {
@@ -35,10 +35,11 @@ namespace TrustMeNews.Controllers
         
 
 
-        public IActionResult Result()
+        public IActionResult Result(string content)
         {
-
-            return View(_results);
+            string apiEndpoint = $"https://content.guardianapis.com/search?q={content}&{NewsApiService.API_KEY}";
+            IEnumerable<Result> results = newsApiService.SendRequest(apiEndpoint).Result;
+            return View(results);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -47,20 +48,16 @@ namespace TrustMeNews.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        ////[HttpGet]
-        ////public IActionResult SearchResults(string content)
-        ////{
-        ////    string apiEndpoint = $"https://content.guardianapis.com/search?q={content}&{NewsApiService.API_KEY}";
-        ////    IEnumerable<Result> results = newsApiService.SendRequest(apiEndpoint).Result;
-        ////    List<string> titles = new List<string>();
-        ////    foreach (Result item in results)
-        ////    {
-        ////        titles.Add(item.webTitle);
-        ////    }
-        ////    ViewData["Results"] = titles;
+        //[Route("/Home")]
+        //[HttpGet]
+        //public void SearchResults(string content)
+        //{
+        //    string apiEndpoint = $"https://content.guardianapis.com/search?q={content}&{NewsApiService.API_KEY}";
+        //    IEnumerable<Result> results = newsApiService.SendRequest(apiEndpoint).Result;
 
-        ////    return View();
-        ////}
+
+        //    Result(results);
+        //}
 
 
     }
