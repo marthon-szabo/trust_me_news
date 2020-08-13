@@ -73,7 +73,7 @@
                                     <img class="image" src="${data.fields.thumbnail}" />
                                     <p>${data.webPublicationDate}</p>
                                     <h5>${data.webTitle}</h5>
-                                    <h6>${data.fields.bodyText}</h6>
+                                    <h6 class="article-body">${data.fields.bodyText}</h6>
                                 </div>`
                     })
 

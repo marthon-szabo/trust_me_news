@@ -11,6 +11,12 @@ a.navbar-brand {
 
 .one-article {
     text-align: center;
+    background: darkgrey;
+}
+
+.article-body {
+    max-width: 800px;
+    display: inline-block;
 }
 
 .bonnieclyde {
