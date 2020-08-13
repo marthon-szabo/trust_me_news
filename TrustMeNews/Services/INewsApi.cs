@@ -11,5 +11,9 @@ namespace TrustMeNews.Services
         {
             return null;
         }
+        public async Task<Content> SendArticleRequest(string endPoint)
+        {
+            return null;
+        }
     }
 }

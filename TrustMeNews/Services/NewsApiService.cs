@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -29,6 +31,23 @@ namespace TrustMeNews.Services
 
             return root.response.results;
         }
+        public async Task<Content> SendArticleRequest(string path)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(path);
+            ContentRoot root = null;
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(path).Result;
+
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                root = await httpResponseMessage.Content.ReadAsAsync<ContentRoot>();
+            }
+
+            httpClient.Dispose();
+
+            return root.response.content;
+        }
+
         public async Task<IEnumerable<Genre>> SendGenreRequest(string path)
         {
             HttpClient httpClient = new HttpClient();
