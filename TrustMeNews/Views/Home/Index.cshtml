@@ -8,7 +8,7 @@
     GenresApiController genresApiController = new GenresApiController(newsApiService);
 }
 
-<div class="articles">
+<div class="articles" style="padding-top: 70px">
 
     @foreach (Result article in newsApiService.SendRequest(apiKey).GetAwaiter().GetResult())
     {
