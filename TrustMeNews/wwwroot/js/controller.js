@@ -4,17 +4,17 @@
         this.document = document;
     };
 
-    sendRequest() {
-        const sb = document.querySelector("#inpSearch");
-        sb.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") {
-                fetch(`https://localhost:44313/Home?content=${e.target.value}`, {
-                    method: "get"
-                })
-                    .then((resp) => console.log(resp))
-            }
-        });
-    }
+    //sendRequest() {
+    //    const sb = document.querySelector("#inpSearch");
+    //    sb.addEventListener("keypress", (e) => {
+    //        if (e.key === "Enter") {
+    //            fetch(`https://localhost:44313/Home?content=${e.target.value}`, {
+    //                method: "get"
+    //            })
+    //                .then((resp) => window.location.replace("https://localhost:44313/Home/Result"))
+    //        }
+    //    });
+    //}
 
     getNewsBySection() {
         document.querySelectorAll(".genre").forEach((genre) => {

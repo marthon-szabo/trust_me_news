@@ -1,5 +1,10 @@
 ﻿@page 
-@model TrustMeNews.Views.Home.SearchModel
+@model IEnumerable<Result>;
+
+
 @{
 }
-<p>adsa</p>
+<p>@foreach (Result item in Model)
+{
+    <p>@item.webTitle</p>
+}</p>
