@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using TrustMeNews.Models;
@@ -24,6 +25,7 @@ namespace TrustMeNews.Controllers
         {
 
             string apiEndpoint = $"https://content.guardianapis.com/search?q={content}&{NewsApiService.API_KEY}";
+            Debug.WriteLine(apiEndpoint);
             return await newsApiService.SendRequest(apiEndpoint);
         }
     }
