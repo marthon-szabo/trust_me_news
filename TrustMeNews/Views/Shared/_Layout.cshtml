@@ -19,25 +19,26 @@
 </head>
 <body>
     <header>
-        <div class="header">
+        <nav class="navbar navbar-dark position">
             <img class="bonnieclyde" src="~/bc.png" />
             <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">TrustMeNews</a>
-        </div>
-        <nav class="navbar navbar-default" style="margin-top: 80px">
             <div class="container-fluid">
                 <ul class="nav navbar-nav" style="display:contents">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
-                    @foreach (Genre genre in newsApiService.SendGenreRequest(genreApiKey).GetAwaiter().GetResult())
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link genre text-dark" id="@genre.id">@genre.webTitle</a>
-                        </li>
-                    }
+                    <li class="dropdown-menu-own">
+                        <button class="dropbtn text-light">Genres</button>
+                        <div class="dropdown-content">
+                            @foreach (Genre genre in newsApiService.SendGenreRequest(genreApiKey).GetAwaiter().GetResult())
+                            {
+                                <a class="genre text-dark" id="@genre.id">@genre.webTitle</a>
+                            }
+                        </div>
+                    </li>
                 </ul>
             </div>
             <input id="inpSearch" placeholder="Search content" asp-controller="SearchBar" />

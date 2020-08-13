@@ -5,8 +5,8 @@ a.navbar-brand {
     text-align: center;
     word-break: break-all;
     color: black;
-    font-size:xx-large;
-    text-decoration:underline;
+    font-size: x-large;
+    text-decoration: underline;
 }
 
 .bonnieclyde {
@@ -14,12 +14,50 @@ a.navbar-brand {
     max-width: 120px;
 }
 
-.header {
+.dropdown-menu-own {
+    float: left;
     overflow: hidden;
+}
+
+    .dropdown-menu-own .dropbtn {
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit; /* Important for vertical align on mobile phones */
+        margin: 0; /* Important for vertical align on mobile phones */
+    }
+
+    .dropdown-menu-own:hover .dropdown-content {
+        display: block;
+    }
+
+.position {
+    position: fixed;
+    top: 0;
+    width: 100%;
     background-color: #333;
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
-    width: 100%; /* Full width */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    height: 300px;
+    overflow: auto;
+}
+
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
 }
 
 .image {
@@ -38,6 +76,10 @@ a.navbar-brand {
     margin-left: 4px;
     text-align: -webkit-center;
     display: inline-grid;
+}
+
+#inpSearch {
+    width: 270px;
 }
 
 .navbar > .container, .navbar > .container-fluid {
