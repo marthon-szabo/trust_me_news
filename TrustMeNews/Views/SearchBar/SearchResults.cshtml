@@ -1,0 +1,12 @@
+﻿@using TrustMeNews.Services;
+@using TrustMeNews.Controllers;
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>@foreach (string item in (IEnumerable<string>)ViewData["Results"])
+{
+    <p>@item</p>
+}</h1>
+

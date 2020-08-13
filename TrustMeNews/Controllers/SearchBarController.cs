@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,21 +12,43 @@ namespace TrustMeNews.Controllers
 {
     [Route("/search")]
     [ApiController]
-    public class SearchBarController : ControllerBase
+    public class SearchBarController : Controller
     {
         INewsApi newsApiService;
+        private readonly ILogger<SearchBarController> _logger;
 
-        public SearchBarController(INewsApi newsApiService)
+        public SearchBarController(INewsApi newsApiService, ILogger<SearchBarController> logger)
         {
             this.newsApiService = newsApiService;
+            this._logger = logger;
         }
 
-        [HttpGet]
-        public async Task<IEnumerable<Result>> GetResultsByContent(string content)
+        public IActionResult SearchResults()
         {
-            string apiEndpoint = $"https://content.guardianapis.com/search?q={content}&{NewsApiService.API_KEY}";
-            Debug.WriteLine(apiEndpoint);
-            return await newsApiService.SendRequest(apiEndpoint);
+            //List<string> titles = new List<string>();
+            //foreach (Result item in results)
+            //{
+            //    titles.Add(item.webTitle);
+            //}
+            //ViewData["Results"] = titles;
+
+            return View();
         }
+
+
+        //[HttpGet]
+        //public IActionResult SearchResults(string content)
+        //{
+        //    string apiEndpoint = $"https://content.guardianapis.com/search?q={content}&{NewsApiService.API_KEY}";
+        //    IEnumerable<Result> results = newsApiService.SendRequest(apiEndpoint).Result;
+        //    List<string> titles = new List<string>();
+        //    foreach (Result item in results)
+        //    {
+        //        titles.Add(item.webTitle);
+        //    }
+        //    ViewData["Results"] = titles;
+
+        //    return View();
+        //}
     }
 }

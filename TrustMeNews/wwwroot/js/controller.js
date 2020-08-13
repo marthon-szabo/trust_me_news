@@ -11,7 +11,7 @@
                 fetch(`https://localhost:44313/search?content=${e.target.value}`, {
                     method: "get"
                 })
-                    .then((resp) => console.log(resp.json))
+                    .then((resp) => console.log(resp))
             }
         });
     }
