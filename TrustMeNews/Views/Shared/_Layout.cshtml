@@ -1,7 +1,7 @@
 ﻿@using TrustMeNews.Services
 @{
-    string genreApiKey = "https://content.guardianapis.com/sections?api-key=d0bd9a0e-8101-4525-8604-4ad01023d10c";
     NewsApiService newsApiService = new NewsApiService();
+    string genreApiKey = $"https://content.guardianapis.com/sections?{NewsApiService.API_KEY}";
 }
 
 <!DOCTYPE html>
