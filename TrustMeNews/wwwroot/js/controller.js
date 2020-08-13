@@ -8,7 +8,7 @@
         const sb = document.querySelector("#inpSearch");
         sb.addEventListener("keypress", (e) => {
             if (e.key === "Enter") {
-                fetch(`https://localhost:44313/search?content=${e.target.value}`, {
+                fetch(`https://localhost:44313/Home?content=${e.target.value}`, {
                     method: "get"
                 })
                     .then((resp) => console.log(resp))
