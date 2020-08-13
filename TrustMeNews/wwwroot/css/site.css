@@ -78,6 +78,10 @@ a.navbar-brand {
     display: inline-grid;
 }
 
+#inpSearch {
+    width: 270px;
+}
+
 .navbar > .container, .navbar > .container-fluid {
     display: contents;
     align-items: center;
