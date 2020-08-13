@@ -4,15 +4,11 @@
         this.document = document;
     };
 
-    returnGenre(genre) {
-        return genre;
-    }
-
     sendRequest() {
         const sb = document.querySelector("#inpSearch");
         sb.addEventListener("keypress", (e) => {
             if (e.key === "Enter") {
-                fetch(`https://localhost:44313/Home?content=${e.target.value}`, {
+                fetch(`https://localhost:44313/content?content=${e.target.value}`, {
                     method: "get"
                 })
                     .then((resp) => console.log(resp.json))
@@ -23,8 +19,7 @@
     getNewsBySection() {
         document.querySelectorAll(".genre").forEach((genre) => {
             genre.addEventListener("click", () => {
-                genreId = genre.id;
-                this.returnGenre(genreId);
+                var genreId = genre.id;
                 fetch(`https://localhost:44313/section?section=${genreId}`, {
                     method: "get"
                 })

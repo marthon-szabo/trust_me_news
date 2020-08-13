@@ -9,7 +9,7 @@ using TrustMeNews.Services;
 
 namespace TrustMeNews.Controllers
 {
-    [Route("/SearchBar")]
+    [Route("/content")]
     public class SearchBarController : Controller
     {
         INewsApi newsApiService;
