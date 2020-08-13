@@ -9,38 +9,26 @@ using TrustMeNews.Services;
 
 namespace TrustMeNews.Controllers
 {
-    [Route("/search")]
-    [ApiController]
+    [Route("/SearchBar")]
     public class SearchBarController : Controller
     {
         INewsApi newsApiService;
-        private IEnumerable<Result> _results;
-
+        public Task<IEnumerable<Result>> _results;
         public SearchBarController(INewsApi newsApiService)
         {
             this.newsApiService = newsApiService;
         }
-
-        public IActionResult SearchResults()
+        public IActionResult Result()
         {
-
             return View();
         }
 
-
-        ////[HttpGet]
-        ////public IActionResult SearchResults(string content)
-        ////{
-        ////    string apiEndpoint = $"https://content.guardianapis.com/search?q={content}&{NewsApiService.API_KEY}";
-        ////    IEnumerable<Result> results = newsApiService.SendRequest(apiEndpoint).Result;
-        ////    List<string> titles = new List<string>();
-        ////    foreach (Result item in results)
-        ////    {
-        ////        titles.Add(item.webTitle);
-        ////    }
-        ////    ViewData["Results"] = titles;
-
-        ////    return View();
-        ////}
+        [HttpGet]
+        public async Task<IEnumerable<Result>> SearchResults(string content)
+        {
+            string apiEndpoint = $"https://content.guardianapis.com/search?q={content}&{NewsApiService.API_KEY}";
+            var _results = newsApiService.SendRequest(apiEndpoint);
+            return await _results;
+        }
     }
 }

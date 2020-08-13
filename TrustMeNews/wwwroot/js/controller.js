@@ -4,22 +4,27 @@
         this.document = document;
     };
 
-    //sendRequest() {
-    //    const sb = document.querySelector("#inpSearch");
-    //    sb.addEventListener("keypress", (e) => {
-    //        if (e.key === "Enter") {
-    //            fetch(`https://localhost:44313/Home?content=${e.target.value}`, {
-    //                method: "get"
-    //            })
-    //                .then((resp) => window.location.replace("https://localhost:44313/Home/Result"))
-    //        }
-    //    });
-    //}
+    returnGenre(genre) {
+        return genre;
+    }
+
+    sendRequest() {
+        const sb = document.querySelector("#inpSearch");
+        sb.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                fetch(`https://localhost:44313/Home?content=${e.target.value}`, {
+                    method: "get"
+                })
+                    .then((resp) => window.location.replace("https://localhost:44313/SearchBar/Result"))
+            }
+        });
+    }
 
     getNewsBySection() {
         document.querySelectorAll(".genre").forEach((genre) => {
             genre.addEventListener("click", () => {
-                var genreId = genre.id;
+                genreId = genre.id;
+                this.returnGenre(genreId);
                 fetch(`https://localhost:44313/section?section=${genreId}`, {
                     method: "get"
                 })

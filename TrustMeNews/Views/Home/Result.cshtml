@@ -1,10 +1,13 @@
-﻿@page 
-@model IEnumerable<Result>;
-
+﻿@using TrustMeNews.Controllers
+@using TrustMeNews.Services
 
 @{
+    ViewBag.Title = "Result";
+    NewsApiService newsApiService = new NewsApiService();
+    SearchBarController homeController = new SearchBarController(newsApiService);
 }
-<p>@foreach (Result item in Model)
+
+@foreach (var item in homeController._results.Result)
 {
     <p>@item.webTitle</p>
-}</p>
+}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 
@@ -30,5 +31,4 @@ namespace TrustMeNews.Models
         public Response response { get; set; }
         public Content content { get; set; }
     }
-
 }

@@ -16,7 +16,7 @@ namespace TrustMeNews
 {
     public class Startup
     {
-        
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -70,9 +70,8 @@ namespace TrustMeNews
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
-                    name: "search",
-                    pattern: "{controller=SearchBar}/{action=SearchResults}");
-
+                    name: "SearchBar",
+                    pattern: "{controller=SearchBar}/{action=Result}");
                 endpoints.MapControllers();
             });
         }
