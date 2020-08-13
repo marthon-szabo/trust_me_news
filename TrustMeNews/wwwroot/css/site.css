@@ -9,6 +9,10 @@ a.navbar-brand {
     text-decoration: underline;
 }
 
+.one-article {
+    text-align: center;
+}
+
 .bonnieclyde {
     display: inline-block;
     max-width: 120px;
@@ -58,7 +62,7 @@ a.navbar-brand {
         text-decoration: none;
         display: block;
         text-align: left;
-}
+    }
 
 .image {
     margin-top: 4px;
