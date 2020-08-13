@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace TrustMeNews.Models
 {
-    public class Result
+    public class Content
     {
-        //ARTICLE
-
         public string id { get; set; }
         public string type { get; set; }
         public string sectionId { get; set; }
@@ -16,19 +15,18 @@ namespace TrustMeNews.Models
         public string webTitle { get; set; }
 
         public Field fields { get; set; }
-
-        public override string ToString() => JsonSerializer.Serialize<Result>(this);
     }
 
-    public class Response
+    public class ContentResponse
     {
-        public List<Result> results { get; set; }
-    }
-
-    public class Root
-    {
-        public Response response { get; set; }
+        public string status { get; set; }
+        public string userTier { get; set; }
+        public int total { get; set; }
         public Content content { get; set; }
     }
 
+    public class ContentRoot
+    {
+        public ContentResponse response { get; set; }
+    }
 }

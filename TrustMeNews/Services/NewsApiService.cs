@@ -35,17 +35,17 @@ namespace TrustMeNews.Services
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(path);
-            Root root = null;
+            ContentRoot root = null;
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(path).Result;
 
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-                root = await httpResponseMessage.Content.ReadAsAsync<Root>();
+                root = await httpResponseMessage.Content.ReadAsAsync<ContentRoot>();
             }
 
             httpClient.Dispose();
 
-            return root.content;
+            return root.response.content;
         }
 
         public async Task<IEnumerable<Genre>> SendGenreRequest(string path)
