@@ -20,16 +20,10 @@
         document.querySelectorAll(".genre").forEach((genre) => {
             genre.addEventListener("click", () => {
                 var genreId = genre.id;
-                fetch(`https://localhost:44313/search?section=${genreId}`, {
+                fetch(`https://localhost:44313/section?section=${genreId}`, {
                     method: "get"
                 })
                     .then((resp) => console.log(resp.json))
-                $.ajax({
-                    type: "GET",
-                    url: `/section/${genreId}`,
-                    //dataType: "string",
-                    //data: { section: genreId }
-                }).then((resp) => console.log(resp));
             })
         })
     }
@@ -38,7 +32,7 @@
         this.document.querySelectorAll(".article").forEach((article) => {
             article.addEventListener("dblclick", () => {
                 var articleId = article.id;
-                fetch(`https://localhost:44313/search?article=${articleId}`, {
+                fetch(`https://localhost:44313/article?article=${articleId}`, {
                     method: "get"
                 })
                     .then((resp) => console.log(resp.json))
