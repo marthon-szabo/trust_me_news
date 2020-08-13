@@ -30,6 +30,7 @@ namespace TrustMeNews
             services.AddControllersWithViews();
             services.AddSingleton<INewsApi, NewsApiService>();
             services.AddControllers();
+
             services.AddCors(options =>
             {
                 options.AddPolicy(name: "http://localhost:3000",
@@ -69,9 +70,9 @@ namespace TrustMeNews
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapControllerRoute(
-                    name: "SearchBar",
-                    pattern: "{controller=SearchBar}/{action=Result}");
+                //endpoints.MapControllerRoute(
+                //    name: "SearchBar",
+                //    pattern: "{controller=SearchBar}/{action=Result}");
                 endpoints.MapControllers();
             });
         }

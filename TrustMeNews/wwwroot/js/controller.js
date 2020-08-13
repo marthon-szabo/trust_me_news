@@ -15,7 +15,7 @@
                 fetch(`https://localhost:44313/Home?content=${e.target.value}`, {
                     method: "get"
                 })
-                    .then((resp) => window.location.replace("https://localhost:44313/SearchBar/Result"))
+                    .then((resp) => console.log(resp.json))
             }
         });
     }
