@@ -22,11 +22,11 @@ namespace TrustMeNews.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Result>> GetArticlesBySection(string article)
+        public async Task<Content> GetArticlesBySection(string article)
         {
             string articleApiKey = $"https://content.guardianapis.com/{article}?{NewsApiService.API_KEY}&show-fields=all";
             Debug.WriteLine(articleApiKey);
-            return await newsApiService.SendRequest(articleApiKey);
+            return await newsApiService.SendArticleRequest(articleApiKey);
         }
 
     }

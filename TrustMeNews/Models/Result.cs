@@ -28,5 +28,19 @@ namespace TrustMeNews.Models
     public class Root
     {
         public Response response { get; set; }
+        public Content content { get; set; }
     }
+
+    public class Content
+    {
+        public string id { get; set; }
+        public string type { get; set; }
+        public string sectionId { get; set; }
+        public string sectionName { get; set; }
+        public DateTime webPublicationDate { get; set; }
+        public string webTitle { get; set; }
+
+        public Field fields { get; set; }
+    }
+
 }
