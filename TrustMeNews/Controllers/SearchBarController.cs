@@ -24,8 +24,7 @@ namespace TrustMeNews.Controllers
         public async Task<IEnumerable<Result>> GetResultsByContent(string content)
         {
 
-            string apiEndpoint = $"https://content.guardianapis.com/search?q={content}&{NewsApiService.API_KEY}";
-            Debug.WriteLine(apiEndpoint);
+            string apiEndpoint = $"https://content.guardianapis.com/search?q={content}&{NewsApiService.API_KEY}&show-fields=all";
             return await newsApiService.SendRequest(apiEndpoint);
         }
     }
