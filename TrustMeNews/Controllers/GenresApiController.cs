@@ -24,7 +24,8 @@ namespace TrustMeNews.Controllers
         [HttpGet]
         public async Task<IEnumerable<Result>> GetArticlesBySection(string genreId)
         {
-            string apiKeyBySection = $"https://content.guardianapis.com/search?api-key=d0bd9a0e-8101-4525-8604-4ad01023d10c&order-by=newest&show-fields=all&page-size=6&section={genreId.First()}";
+            string apiKeyBySection = "https://content.guardianapis.com/search?api-key=d0bd9a0e-8101-4525-8604-4ad01023d10c&order-by=newest&show-fields=all&page-size=6&section=" + $"{genreId}";
+            Debug.WriteLine("GENRE: " + apiKeyBySection);
             return await newsApiService.SendRequest(apiKeyBySection);
         }
     }
