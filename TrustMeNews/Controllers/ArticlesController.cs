@@ -24,7 +24,7 @@ namespace TrustMeNews.Controllers
         public void GetArticlesBySection(string articleId)
         {
             string article = $"{articleId.First()}";
-            string articleApiKey = "https://content.guardianapis.com/" + article + "?api-key=d0bd9a0e-8101-4525-8604-4ad01023d10c&show-fields=all";
+            string articleApiKey = "https://content.guardianapis.com/" + article + "?{NewsApiService.API_KEY}&show-fields=all";
             Debug.WriteLine(article);
         }
 
