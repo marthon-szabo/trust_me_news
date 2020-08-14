@@ -4,6 +4,18 @@
         this.document = document;
     };
 
+    outputResponse(dataContainer, data) {
+        dataContainer.innerHTML += `
+            <div class="article" id="${data.id}">
+                <img class="image" src="${data.fields.thumbnail}" />
+                <p>${data.webPublicationDate}</p>
+                <h5>${data.webTitle}</h5>
+                <p>${data.fields.trailText}</p>
+                <h6>${data.fields.byline}</h6>
+            </div>`
+    }
+
+
     sendRequest() {
         const sb = document.querySelector("#inpSearch");
         sb.addEventListener("keypress", (e) => {
@@ -16,14 +28,7 @@
                         let articles = this.document.querySelector(".articles");
                         articles.innerHTML = "";
                         data.forEach(article => {
-                            articles.innerHTML += `
-                                <div class="article" id="${article.id}">
-                                    <img class="image" src="${article.fields.thumbnail}" />
-                                    <p>${article.webPublicationDate}</p>
-                                    <h5>${article.webTitle}</h5>
-                                    <p>${article.fields.trailText}</p>
-                                    <h6>${article.fields.byline}</h6>
-                                </div>`
+                            this.outputResponse(articles, article)
                         })
                     })
             }
@@ -42,14 +47,7 @@
                         let articles = this.document.querySelector(".articles");
                         articles.innerHTML = "";
                         data.forEach(article => {
-                            articles.innerHTML += `
-                                <div class="article" id="${article.id}">
-                                    <img class="image" src="${article.fields.thumbnail}" />
-                                    <p>${article.webPublicationDate}</p>
-                                    <h5>${article.webTitle}</h5>
-                                    <p>${article.fields.trailText}</p>
-                                    <h6>${article.fields.byline}</h6>
-                                </div>`
+                            this.outputResponse(articles, article);
                         })
                     })
 
@@ -68,7 +66,7 @@
                     .then((data) => {
                         let articles = this.document.querySelector(".articles");
                         articles.innerHTML = "";
-                            articles.innerHTML += `
+                        articles.innerHTML += `
                                 <div class="one-article" id="${data.id}">
                                     <img class="image" src="${data.fields.thumbnail}" />
                                     <p>${data.webPublicationDate}</p>
