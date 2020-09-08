@@ -2,34 +2,56 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TrustMeNews.Data;
 
 namespace TrustMeNews.Models
 {
     public class UserRepository : IUserRepository
     {
-        public User CreateUser(int id, string userName, char password, string email)
+        private readonly TrustMeNewsDataContext dbContext;
+
+        public UserRepository(TrustMeNewsDataContext dbContext)
         {
-            throw new NotImplementedException();
+            this.dbContext = dbContext;
+        }
+
+        public User CreateUser(User user)
+        {
+            dbContext.Users.Add(user);
+            dbContext.SaveChanges();
+            return user;
         }
 
         public User DeleteUser(int id)
         {
-            throw new NotImplementedException();
+            User toRemove = dbContext.Users.Find(id);
+
+            if (toRemove != null)
+            {
+                dbContext.Remove(toRemove);
+                dbContext.SaveChanges();
+            }
+
+            return toRemove;
         }
 
         public IEnumerable<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return dbContext.Users;
         }
 
         public User GetEmployee(int id)
         {
-            throw new NotImplementedException();
+            return dbContext.Users.Find(id);
         }
 
-        public User UpdateUser(int id)
+        public User UpdateUser(User userChanges)
         {
-            throw new NotImplementedException();
+            var user = dbContext.Users.Attach(userChanges);
+            user.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            dbContext.SaveChanges();
+
+            return userChanges;
         }
     }
 }

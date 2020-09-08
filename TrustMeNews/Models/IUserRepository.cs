@@ -7,10 +7,10 @@ namespace TrustMeNews.Models
 {
     interface IUserRepository
     {
-        User CreateUser(int id, string userName, char password, string email);
+        User CreateUser(User user);
         User GetEmployee(int id);
         IEnumerable<User> GetAllUsers();
-        User UpdateUser(int id);
+        User UpdateUser(User userChanges);
         User DeleteUser(int id);
     }
 }
