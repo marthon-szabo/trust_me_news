@@ -9,15 +9,16 @@ namespace TrustMeNews.Data
 {
     public class TrustMeNewsDataContext : DbContext
     {
+        public TrustMeNewsDataContext(DbContextOptions<TrustMeNewsDataContext> options)
+            : base(options)
+        {
+
+        }
+
         public DbSet<User> Users { get; set; }
 
         public DbSet<Comment> MyProperty { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;" +
-                "Initial Category");
-        }
+        
     }
 }
