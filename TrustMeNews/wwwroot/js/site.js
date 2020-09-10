@@ -11,7 +11,14 @@ class Site {
 
     changeTheme() {
         this.document.querySelector(".themes").addEventListener("click", () => {
-            document.body.classList.add("dark");
+            document.querySelectorAll(".dark").forEach((e) => {
+                e.classList.remove("dark");
+                e.classList.add("light");
+            });
+            document.querySelectorAll(".navbar").forEach((e) => {
+                e.classList.remove("background-light");
+                e.classList.add("background-dark");
+            })
         })
     }
 

@@ -1,10 +1,18 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+.light {
+    color: black;
+}
+
+.dark {
+    color: white;
+}
+
+
 a.navbar-brand {
     text-align: center;
     word-break: break-all;
-    color: black;
     font-size: x-large;
     text-decoration: underline;
 }
@@ -32,7 +40,6 @@ a.navbar-brand {
     .dropdown-menu-own .dropbtn {
         border: none;
         outline: none;
-        color: white;
         padding: 14px 16px;
         background-color: inherit;
         font-family: inherit; /* Important for vertical align on mobile phones */
@@ -47,7 +54,14 @@ a.navbar-brand {
     position: fixed;
     top: 0;
     width: 100%;
+}
+
+.background-light {
     background-color: #333;
+}
+
+.background-dark {
+    background-color: white;
 }
 
 .dropdown-content {
@@ -63,7 +77,6 @@ a.navbar-brand {
 
     .dropdown-content a {
         float: none;
-        color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
@@ -128,10 +141,10 @@ html {
     font-size: 14px;
 }
 
-.dark {
+/*.dark {
     text-decoration-color: white;
     background-color: black;
-}
+}*/
 
 @media (min-width: 768px) {
     html {
@@ -177,5 +190,4 @@ body {
 }
 
 @media {
-
 }
