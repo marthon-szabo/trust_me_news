@@ -4,4 +4,5 @@ controller.getNewsBySection();
 controller.getArticle();
 
 const site = new Site(document);
-site.changeTheme();
+site.changeToDarkTheme();
+site.changeToLightTheme();

@@ -2,7 +2,7 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 .light {
-    color: black;
+    color: indianred;
 }
 
 .dark {
@@ -22,8 +22,7 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 .dark-theme:hover {
-    background-color: grey;
-    color: indianred;
+    background-color: white;
 }
 
 
@@ -74,11 +73,11 @@ a.navbar-brand {
 }
 
 .background-light {
-    background-color: #333;
+    background-color: darkgray;
 }
 
 .background-dark {
-    background-color: white;
+    background-color: black;
 }
 
 .dropdown-content {
@@ -105,8 +104,22 @@ a.navbar-brand {
     max-width: 430px;
 }
 
-.article:hover {
+.article-light:hover {
     background-color: lightgrey;
+}
+.article-dark:hover {
+    background-color: indianred;
+}
+
+.article-dark {
+    background-color: black;
+    color: white;
+}
+
+
+.article-light {
+    background-color: white;
+    color: black;
 }
 
 .article {
@@ -154,11 +167,6 @@ html {
     font-size: 14px;
 }
 
-/*.dark {
-    text-decoration-color: white;
-    background-color: black;
-}*/
-
 @media (min-width: 768px) {
     html {
         font-size: 16px;
@@ -202,5 +210,3 @@ body {
     line-height: 60px; /* Vertically center the text there */
 }
 
-@media {
-}

@@ -10,7 +10,7 @@
 
     @foreach (Result article in newsApiService.SendRequest(apiKey).GetAwaiter().GetResult())
     {
-        <div class="article" id="@article.id">
+        <div class="article article-light" id="@article.id">
             <img class="image" src="@article.fields.thumbnail" />
             <p>@article.webPublicationDate</p>
             <h5>@article.webTitle</h5>
