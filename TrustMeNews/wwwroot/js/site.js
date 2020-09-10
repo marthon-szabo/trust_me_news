@@ -18,7 +18,13 @@ class Site {
             document.querySelectorAll(".navbar").forEach((e) => {
                 e.classList.remove("background-light");
                 e.classList.add("background-dark");
-            })
+            });
+            document.querySelectorAll(".light-theme").forEach((e) => {
+                e.classList.remove("light-theme");
+                e.classList.add("dark-theme");
+            });
+            this.document.querySelector(".dropdown-content").style.color = "indianred";
+
         })
     }
 

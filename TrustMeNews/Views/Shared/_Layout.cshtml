@@ -35,7 +35,7 @@
                         <div class="dropdown-content">
                             @foreach (Genre genre in newsApiService.SendGenreRequest(genreApiKey).GetAwaiter().GetResult())
                             {
-                                <a class="genre" id="@genre.id">@genre.webTitle</a>
+                                <a class="light-theme" id="@genre.id">@genre.webTitle</a>
                             }
                         </div>
                     </li>
