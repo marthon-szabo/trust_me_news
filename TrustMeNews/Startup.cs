@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using TrustMeNews.Services;
 using Microsoft.EntityFrameworkCore;
+using TrustMeNews.Data;
+using TrustMeNews.Models;
 
 namespace TrustMeNews
 {
@@ -27,6 +29,10 @@ namespace TrustMeNews
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContextPool<TrustMeNewsDataContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("TrustMeNewsContext"))
+                );
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddControllersWithViews();
             services.AddSingleton<INewsApi, NewsApiService>();
             services.AddControllers();
