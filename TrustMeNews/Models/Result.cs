@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 
 namespace TrustMeNews.Models
@@ -7,7 +8,7 @@ namespace TrustMeNews.Models
     public class Result
     {
         //ARTICLE
-
+        [Key]
         public string id { get; set; }
         public string type { get; set; }
         public string sectionId { get; set; }
