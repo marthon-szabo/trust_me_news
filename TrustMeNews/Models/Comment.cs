@@ -9,7 +9,7 @@ namespace TrustMeNews.Models
         [Key]
         public int CommentId { get; set; }
 
-        []
+        
         public string Content { get; set; }
     }
 }

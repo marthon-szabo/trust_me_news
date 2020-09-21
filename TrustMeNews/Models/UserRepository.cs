@@ -15,11 +15,11 @@ namespace TrustMeNews.Models
             this.dbContext = dbContext;
         }
 
-        public User Create(User user)
+        public User Create(User model)
         {
-            dbContext.Users.Add(user);
+            dbContext.Users.Add(model);
             dbContext.SaveChanges();
-            return user;
+            return model;
         }
 
         public User Delete(int id)
