@@ -29,7 +29,8 @@ namespace TrustMeNews.Models
         [PasswordPropertyText]
         public string Password { get; set; }
 
-        
+        public string SessionId { get; set; }
+
         public List<Result> Articles { get; set; }
 
         

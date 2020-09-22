@@ -16,11 +16,11 @@ namespace TrustMeNews.Models
         public string sectionName { get; set; }
         public DateTime webPublicationDate { get; set; }
         public string webTitle { get; set; }
+        public User User { get; set; }
 
         
         public Field fields { get; set; }
 
-        public User User { get; set; }
 
         public override string ToString() => JsonSerializer.Serialize<Result>(this);
     }
