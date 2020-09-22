@@ -1,11 +1,12 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace TrustMeNews.Models
 {
     public class Field
     {
+        [Key]
         public string headline { get; set; }
         public string standfirst { get; set; }
         //author

@@ -32,7 +32,7 @@ namespace TrustMeNews
             services.AddDbContextPool<TrustMeNewsDataContext>(
                 option =>
                 {
-                    option.UseSqlServer(Configuration.GetConnectionString("TMNewsDb"));
+                    option.UseSqlServer(Configuration.GetConnectionString("TrustMeNewsContext"));
             });
             services.AddSingleton<INewsApi, NewsApiService>();
             services.AddControllers();

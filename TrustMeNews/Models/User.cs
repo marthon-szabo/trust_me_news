@@ -11,6 +11,12 @@ namespace TrustMeNews.Models
 {
     public class User
     {
+        public User()
+        {
+            Articles = new List<Result>();
+            Comments = new List<Comment>();
+        }
+
         [Key]
         public int UserId { get; set; }
 
@@ -23,10 +29,10 @@ namespace TrustMeNews.Models
         [PasswordPropertyText]
         public string Password { get; set; }
 
-        [ForeignKey("Result")]
+        
         public List<Result> Articles { get; set; }
 
-        [ForeignKey("Comment")]
+        
         public List<Comment> Comments { get; set; }
 
 
