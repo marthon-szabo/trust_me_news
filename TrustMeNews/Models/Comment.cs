@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace TrustMeNews.Models
@@ -11,5 +12,7 @@ namespace TrustMeNews.Models
 
         
         public string Content { get; set; }
+
+        public User User { get; set; }
     }
 }

@@ -18,6 +18,8 @@ namespace TrustMeNews.Models
 
         public Field fields { get; set; }
 
+        public User User { get; set; }
+
         public override string ToString() => JsonSerializer.Serialize<Result>(this);
     }
 

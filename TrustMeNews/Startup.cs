@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using TrustMeNews.Services;
 using Microsoft.EntityFrameworkCore;
+using TrustMeNews.Data;
 
 namespace TrustMeNews
 {
@@ -28,6 +29,11 @@ namespace TrustMeNews
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContextPool<TrustMeNewsDataContext>(
+                option =>
+                {
+                    option.UseSqlServer(Configuration.GetConnectionString("TMNewsDb"));
+            });
             services.AddSingleton<INewsApi, NewsApiService>();
             services.AddControllers();
             services.AddCors(options =>
