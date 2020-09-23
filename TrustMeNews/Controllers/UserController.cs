@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using TrustMeNews.Data;
@@ -18,6 +20,45 @@ namespace TrustMeNews.Controllers
         public UserController(TrustMeNewsDataContext context)
         {
             _context = context;
+        }
+
+        // GET: User/Login/5
+        public async Task<IActionResult> Login(string? isValid)
+        {
+            if (isValid == null)
+            {
+                ViewData["Message"] = "null";
+                return View();
+            }
+            else
+            {
+                ViewData["Message"] = isValid;
+                return View();
+            }
+
+            
+        }
+
+        // POST: User/Login/5
+        [HttpPost]
+        public async Task<IActionResult> Login(string? username, string? pw)
+        {
+            ViewData["Message"] = "null";
+            User? user = await _context.Users
+                .FirstOrDefaultAsync(u => u.UserName == username);
+            
+            if (user == null)
+            {
+                Response.Redirect("Login?isValid=invalid", true);
+            }
+            else if (!Hasher.Authenticate(pw, user.Salt, user.Password))
+            {
+                Response.Redirect("Login?isValid=invalid", true);
+            }
+
+            return View();
+            
+            
         }
 
         // GET: User
@@ -59,7 +100,9 @@ namespace TrustMeNews.Controllers
         {
             if (ModelState.IsValid)
             {
-                string[] saltAndHash = Hasher.HashMe(RouteData.Values["Password"].ToString());
+                string[] saltAndHash = Hasher.HashMe(user.Password);
+                user.Salt = saltAndHash[0];
+                user.Password = saltAndHash[1];
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
