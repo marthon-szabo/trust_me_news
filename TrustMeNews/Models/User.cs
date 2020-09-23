@@ -26,6 +26,8 @@ namespace TrustMeNews.Models
         [Required]
         public string UserName { get; set; }
 
+        public string Salt { get; set; }
+
         [PasswordPropertyText]
         public string Password { get; set; }
 
