@@ -28,6 +28,16 @@ namespace TrustMeNews.Data
             modelBuilder.Entity<User>()
                 .HasMany(user => user.Comments)
                 .WithOne(comment => comment.User);
+
+            modelBuilder.Entity<User>().HasData(
+                    new User
+                    {
+                        UserId = 1,
+                        UserName = "Dolla$ign",
+                        Email = "dolla@bigmoney.cash",
+                        Password = "money"
+                    }
+                );
            
         }
     }
