@@ -1,14 +1,13 @@
 ﻿@using TrustMeNews.Services;
+@model IEnumerable<TrustMeNews.Models.Result>;
 
 @{
-    NewsApiService newsApiService = new NewsApiService();
-    string apiKey = "https://content.guardianapis.com/search?api-key=d0bd9a0e-8101-4525-8604-4ad01023d10c&order-by=newest&show-fields=all&page-size=6";
     ViewData["Title"] = "Home Page";
 }
 
 <div class="articles" style="padding-top: 70px">
 
-    @foreach (Result article in newsApiService.SendRequest(apiKey).GetAwaiter().GetResult())
+    @foreach (Result article in Model)
     {
         <div class="article" id="@article.id">
             <img class="image" src="@article.fields.thumbnail" />

@@ -107,7 +107,7 @@ a {
 }
 
     a:hover {
-        color: blue !important;
+        color: dimgrey;
     }
 
 .btn-primary {
