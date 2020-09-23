@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using TrustMeNews.Data;
 using TrustMeNews.Models;
 
@@ -58,7 +59,7 @@ namespace TrustMeNews.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                string[] saltAndHash = Hasher.HashMe(RouteData.Values["Password"].ToString());
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
