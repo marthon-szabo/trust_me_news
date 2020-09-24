@@ -36,7 +36,7 @@ namespace TrustMeNews.Controllers
                 return View();
             }
 
-            
+
         }
 
         // POST: User/Login/5
@@ -46,7 +46,7 @@ namespace TrustMeNews.Controllers
             ViewData["Message"] = "null";
             User? user = await _context.Users
                 .FirstOrDefaultAsync(u => u.UserName == username);
-            
+
             if (user == null)
             {
                 Response.Redirect("Login?isValid=invalid", true);
@@ -55,10 +55,14 @@ namespace TrustMeNews.Controllers
             {
                 Response.Redirect("Login?isValid=invalid", true);
             }
+            else if (Hasher.Authenticate(pw, user.Salt, user.Password))
+            {
+                Response.Redirect("Home/Index", true);
+            }
 
             return View();
-            
-            
+
+
         }
 
         // GET: User
