@@ -41,11 +41,11 @@ namespace TrustMeNews.Controllers
 
         // POST: User/Login/5
         [HttpPost]
-        public async Task<IActionResult> Login(string? username, string? pw)
+        public async Task<IActionResult> Login(string? unameInp, string? pw)
         {
             ViewData["Message"] = "null";
             User? user = await _context.Users
-                .FirstOrDefaultAsync(u => u.UserName == username);
+                .FirstOrDefaultAsync(u => u.UserName == unameInp);
 
             if (user == null)
             {
