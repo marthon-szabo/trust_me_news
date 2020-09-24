@@ -57,7 +57,7 @@ namespace TrustMeNews.Controllers
             }
             else if (Hasher.Authenticate(pw, user.Salt, user.Password))
             {
-                Response.Redirect("Home/Index", true);
+                return RedirectToAction("Index", "Home", true);
             }
 
             return View();
