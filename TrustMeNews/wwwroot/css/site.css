@@ -1,10 +1,34 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+.light {
+    color: indianred;
+}
+
+.dark {
+    color: white;
+}
+
+.light-theme {
+    background-color: #f1f1f1;
+}
+
+.light-theme:hover {
+    background-color: indianred;
+}
+
+.dark-theme {
+    background-color: black;
+}
+
+.dark-theme:hover {
+    background-color: white;
+}
+
+
 a.navbar-brand {
     text-align: center;
     word-break: break-all;
-    color: black;
     font-size: x-large;
     text-decoration: underline;
 }
@@ -32,7 +56,6 @@ a.navbar-brand {
     .dropdown-menu-own .dropbtn {
         border: none;
         outline: none;
-        color: white;
         padding: 14px 16px;
         background-color: inherit;
         font-family: inherit; /* Important for vertical align on mobile phones */
@@ -47,13 +70,19 @@ a.navbar-brand {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #333;
+}
+
+.background-light {
+    background-color: darkgray;
+}
+
+.background-dark {
+    background-color: black;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -63,20 +92,34 @@ a.navbar-brand {
 
     .dropdown-content a {
         float: none;
-        color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
         text-align: left;
     }
 
+
 .image {
     margin-top: 4px;
     max-width: 430px;
 }
 
-.article:hover {
+.article-light:hover {
     background-color: lightgrey;
+}
+.article-dark:hover {
+    background-color: indianred;
+}
+
+.article-dark {
+    background-color: black;
+    color: white;
+}
+
+
+.article-light {
+    background-color: white;
+    color: black;
 }
 
 .article {
@@ -98,16 +141,12 @@ a.navbar-brand {
     justify-content: space-between;
 }
 
-.genre:hover {
-    background-color: indianred;
-}
-
 a {
-    color: #0366d6;
+    color: black;
 }
 
     a:hover {
-        color: dimgrey;
+        color: black;
     }
 
 .btn-primary {

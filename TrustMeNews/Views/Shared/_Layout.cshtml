@@ -19,25 +19,29 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-dark position">
+        <nav class="navbar position background-light" style="">
             <img class="bonnieclyde" src="~/bc.png" />
-            <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">TrustMeNews</a>
+            <a class="navbar-brand dark" asp-area="" asp-controller="Home" asp-action="Index">TrustMeNews</a>
             <div class="container-fluid">
                 <ul class="nav navbar-nav" style="display:contents">
                     <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
                     <li class="dropdown-menu-own">
-                        <button class="dropbtn text-light">Genres</button>
+                        <button class="dropbtn dark">Genres</button>
                         <div class="dropdown-content">
                             @foreach (Genre genre in newsApiService.SendGenreRequest(genreApiKey).GetAwaiter().GetResult())
                             {
-                                <a class="genre text-dark" id="@genre.id">@genre.webTitle</a>
+                                <a class="genre light-theme" id="@genre.id">@genre.webTitle</a>
                             }
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <button class="darktheme">DARK</button>
+                        <button class="lighttheme">LIGHT</button>
                     </li>
                 </ul>
             </div>
