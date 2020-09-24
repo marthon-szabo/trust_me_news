@@ -9,7 +9,36 @@ for details on configuring this project to bundle and minify static web assets. 
     color: white;
 }
 
+.comment {
+    display: block;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.commenttext {
+    min-height: 150px;
+}
+
+.buttton {
+    color: white;
+    background-color: black;
+    border-color: darkgray;
+}
+
+    .buttton:hover {
+        color: indianred;
+        background-color: black;
+    }
+
 .form-group {
+    text-align: center;
+}
+/*
+.light:hover {
+    color: grey;
+}*/
+
+.center {
     text-align: center;
 }
 
@@ -29,6 +58,10 @@ for details on configuring this project to bundle and minify static web assets. 
     background-color: white;
 }
 
+.navbar {
+    border-bottom-color: black;
+}
+
 
 a.navbar-brand {
     text-align: center;
@@ -39,7 +72,6 @@ a.navbar-brand {
 
 .one-article {
     text-align: center;
-    background: darkgrey;
 }
 
 .article-body {

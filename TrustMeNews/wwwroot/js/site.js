@@ -15,7 +15,7 @@ class Site {
                 e.classList.remove("dark");
                 e.classList.add("light");
             });
-            document.querySelectorAll(".navbar").forEach((e) => {
+            document.querySelectorAll(".background-light").forEach((e) => {
                 e.classList.remove("background-light");
                 e.classList.add("background-dark");
             });
@@ -38,7 +38,7 @@ class Site {
                 e.classList.remove("light");
                 e.classList.add("dark");
             });
-            document.querySelectorAll(".navbar").forEach((e) => {
+            document.querySelectorAll(".background-dark").forEach((e) => {
                 e.classList.remove("background-dark");
                 e.classList.add("background-light");
             });
@@ -51,7 +51,7 @@ class Site {
                 e.classList.remove("article-dark");
                 e.classList.add("article-light");
             });
-            this.document.querySelector(".articles").style.background = "white";
+            this.document.querySelector(".articles").style.background = "darkgrey";
         })
     }
 
