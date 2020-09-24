@@ -5,18 +5,25 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="articles" style="padding-top: 70px">
-    @if (ViewData["sessionId"] != null)
+@section loginField {
+    @if (ViewData["sessionId"] == null)
     {
-        <h1>@ViewData["sessionId"]</h1>
+        <a class="hover dark" asp-area="" asp-controller="User" asp-action="Create">Register</a>
+        <a class="hover dark" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+    }
+    else
+    {
+        <h1>@ViewData["username"]</h1>
     }
 
+}
+<div class="articles" style="padding-top: 70px">
     @foreach (Result article in Model)
     {
         <div class="article article-light" id="@article.id">
             <img class="image" src="@article.fields.thumbnail" />
             <p>@article.webPublicationDate</p>
-            <h5>@article.webTitle<a asp-controller="User" asp-action="AddArticle"> <img class="star" src="~/star.png" /></a></h5>
+            <h5>@article.webTitle<a asp-controller="User" asp-route-articleId=@article.sectionId asp-route-sessionId=@ViewData["sessionId"] asp-action="AddArticle"> <img class="star" src="~/star.png" /></a></h5>
             <p>@article.fields.trailText</p>
             <h6>@article.fields.byline</h6>
         </div>

@@ -59,7 +59,7 @@ namespace TrustMeNews.Controllers
             }
             else
             {
-                string sessionId = new Guid().ToString();
+                string sessionId = Guid.NewGuid().ToString();
                 user.SessionId = sessionId;
                 
                 await _context.SaveChangesAsync();
@@ -204,12 +204,19 @@ namespace TrustMeNews.Controllers
 
 
         //add article to userid, find articleid
-        [HttpPost]
-        public async Task<IActionResult> AddArticle(string articleId, string userId)
+        public async Task<IActionResult> AddArticle(string articleId, string? sessionId)
         {
+            if (sessionId == null)
+            {
+                throw new InvalidOperationException("You must log in!");
+            }
 
-
-            return View();
+            User user = await _context.Users
+                .FirstOrDefaultAsync(u => u.SessionId.Equals(sessionId));
+            _context.Articles.Add(new Result { id = articleId, User = user });
+            await _context.SaveChangesAsync();
+               
+            return RedirectToAction(nameof(Index));
         }
 
 

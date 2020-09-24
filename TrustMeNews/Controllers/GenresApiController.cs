@@ -20,7 +20,7 @@ namespace TrustMeNews.Controllers
         [HttpGet]
         public async Task<IEnumerable<Result>> GetArticlesBySection(string section)
         {
-            string apiKeyBySection = $"https://content.guardianapis.com/search?{NewsApiService.API_KEY}&order-by=newest&show-fields=all&page-size=6&section={section}";
+            string apiKeyBySection = $"https://content.guardianapis.com/search?{NewsApiService.API_KEY}&order-by=newest&show-fields=all&page-size=8&section={section}";
             return await newsApiService.SendRequest(apiKeyBySection);
         }
     }
