@@ -202,6 +202,15 @@ namespace TrustMeNews.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+        //add article to userid, find articleid
+        [HttpPost]
+        public async Task<IActionResult> AddArticle(string articleId, string userId)
+        {
+            return View();
+        }
+
+
         private bool UserExists(int id)
         {
             return _context.Users.Any(e => e.UserId == id);
