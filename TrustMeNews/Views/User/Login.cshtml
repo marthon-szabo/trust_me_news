@@ -2,16 +2,16 @@
 @{
     ViewData["Title"] = "Login";
 }
-<div style="padding: 70px">
+<div class="center background-light dark" style="padding-top: 10%">
     @if (ViewData["Message"].Equals("invalid"))
     {
-        <h1 style="color: red"><b>Invalid username/email or password!</b></h1>
+        <p style="color: red"><b>Invalid username/email or password!</b></p>
     }
     <h1>Login</h1>
     <form action="Login" method="post">
         <input name="unameInp" placeholder="Username or Email" />
         <input name="pw" placeholder="Password" type="password" />
-        <input name="loginBtn" type="submit" value="Login" />
+        <input class="buttton" name="loginBtn" type="submit" value="Login" />
     </form>
     <h1/>
     <div>

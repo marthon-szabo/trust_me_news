@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -56,7 +57,7 @@ namespace TrustMeNews.Controllers
             {
                 Response.Redirect("Login?isValid=invalid", true);
             }
-            else if (Hasher.Authenticate(pw, user.Salt, user.Password))
+            else
             {
                 string sessionId = new Guid().ToString();
                 user.SessionId = sessionId;

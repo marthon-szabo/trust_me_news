@@ -6,7 +6,7 @@
 
     outputResponse(dataContainer, data) {
         dataContainer.innerHTML += `
-            <div class="article" id="${data.id}">
+            <div class="article dark background-light" id="${data.id}">
                 <img class="image" src="${data.fields.thumbnail}" />
                 <p>${data.webPublicationDate}</p>
                 <h5>${data.webTitle}</h5>
@@ -66,25 +66,18 @@
                         let articles = this.document.querySelector(".articles");
                         articles.innerHTML = "";
                         articles.innerHTML += `
-                                <div class="one-article" id="${data.id}">
+                                <div class="one-article background-light dark" id="${data.id}">
                                     <img class="image" src="${data.fields.thumbnail}" />
                                     <p>${data.webPublicationDate}</p>
                                     <h5>${data.webTitle}</h5>
                                     <h6 class="article-body">${data.fields.bodyText}</h6>
-                                </div>
-                                <div class="comment">
-                                    <div class="form-group">
-                                        <label asp-for="UserName" class="control-label">Username</label>
-                                        <input asp-for="UserName" class="form-control" />
-                                        <span asp-validation-for="UserName"></span>
-                                    </div>
-                                    <div class="form-group">
+                                    <div class="comment">
                                         <label asp-for="Comment" class="control-label">Comment</label>
-                                        <input asp-for="Comment" class="form-control" />
+                                        <input asp-for="Comment" class="form-control commenttext" />
                                         <span asp-validation-for="Comment"></span>
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" value="Add" class="btn btn-primary" />
+                                        <input type="submit" value="Add" class="btn buttton" />
                                     </div>
                                 </div>`
                     })
