@@ -40,6 +40,7 @@ namespace TrustMeNews.Controllers
                 }
                 
                 ViewData["sessionId"] = sessionId;
+                ViewData["username"] = current_user.UserName;
             }
 
             newsApiService = new NewsApiService();

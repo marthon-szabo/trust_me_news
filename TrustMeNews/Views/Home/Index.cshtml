@@ -5,6 +5,18 @@
     ViewData["Title"] = "Home Page";
 }
 
+@section loginField {
+    @if (ViewData["sessionId"] == null)
+    {
+        <a class="hover dark" asp-area="" asp-controller="User" asp-action="Create">Register</a>
+        <a class="hover dark" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+    }
+    else
+    {
+        <h1>@ViewData["username"]</h1>
+    }
+
+}
 <div class="articles" style="padding-top: 70px">
     @if (ViewData["sessionId"] != null)
     {
@@ -16,11 +28,12 @@
         <div class="article article-light" id="@article.id">
             <img class="image" src="@article.fields.thumbnail" />
             <p>@article.webPublicationDate</p>
-            <h5>@article.webTitle
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </h5>
-            <p>@article.fields.trailText</p>
-            <h6>@article.fields.byline</h6>
-        </div>
-    }
+            <h5>
+                @article.webTitle
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </h5>
+        <p>@article.fields.trailText</p>
+        <h6>@article.fields.byline</h6>
+    </div>
+}
 </div>
