@@ -204,10 +204,19 @@ namespace TrustMeNews.Controllers
 
 
         //add article to userid, find articleid
-        [HttpPost]
-        public async Task<IActionResult> AddArticle(string articleId, string userId)
+        public async Task<IActionResult> AddArticle(string articleId, string? sessionId)
         {
-            return View();
+            if (sessionId == null)
+            {
+                throw new InvalidOperationException("You must log in!");
+            }
+
+            User user = await _context.Users
+                .FirstOrDefaultAsync(u => u.SessionId.Equals(sessionId));
+            _context.Articles.Add(new Result { id = articleId, User = user });
+            await _context.SaveChangesAsync();
+               
+            return RedirectToAction(nameof(Index));
         }
 
 

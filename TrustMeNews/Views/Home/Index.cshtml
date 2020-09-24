@@ -23,7 +23,7 @@
         <div class="article article-light" id="@article.id">
             <img class="image" src="@article.fields.thumbnail" />
             <p>@article.webPublicationDate</p>
-            <h5>@article.webTitle<a asp-controller="User" asp-action="AddArticle"> <img class="star" src="~/star.png" /></a></h5>
+            <h5>@article.webTitle<a asp-controller="User" asp-route-articleId=@article.sectionId asp-route-sessionId=@ViewData["sessionId"] asp-action="AddArticle"> <img class="star" src="~/star.png" /></a></h5>
             <p>@article.fields.trailText</p>
             <h6>@article.fields.byline</h6>
         </div>

@@ -28,16 +28,11 @@ namespace TrustMeNews.Controllers
         
         public async Task<IActionResult> Index(string? user)
         {
-            if (user != null)
+            string? sessionId = HttpContext.Session.GetString("sessionId");
+            if (sessionId != null)
             {
                 User current_user = await _context.Users
-                    .FirstOrDefaultAsync(u => u.UserName.Equals(user));
-                string sessionId = HttpContext.Session.GetString("sessionId");
-                
-                if (!current_user.SessionId.Equals(sessionId))
-                {
-                    throw new InvalidDataContractException();
-                }
+                    .FirstOrDefaultAsync(u => u.SessionId.Equals(sessionId));
                 
                 ViewData["sessionId"] = sessionId;
                 ViewData["username"] = current_user.UserName;
