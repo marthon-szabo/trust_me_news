@@ -9,6 +9,10 @@ for details on configuring this project to bundle and minify static web assets. 
     color: white;
 }
 
+.form-group {
+    text-align: center;
+}
+
 .light-theme {
     background-color: #f1f1f1;
 }

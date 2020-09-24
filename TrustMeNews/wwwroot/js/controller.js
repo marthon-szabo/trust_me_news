@@ -15,7 +15,6 @@
             </div>`
     }
 
-
     sendRequest() {
         const sb = document.querySelector("#inpSearch");
         sb.addEventListener("keypress", (e) => {
@@ -72,6 +71,21 @@
                                     <p>${data.webPublicationDate}</p>
                                     <h5>${data.webTitle}</h5>
                                     <h6 class="article-body">${data.fields.bodyText}</h6>
+                                </div>
+                                <div class="comment">
+                                    <div class="form-group">
+                                        <label asp-for="UserName" class="control-label">Username</label>
+                                        <input asp-for="UserName" class="form-control" />
+                                        <span asp-validation-for="UserName"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Comment" class="control-label">Comment</label>
+                                        <input asp-for="Comment" class="form-control" />
+                                        <span asp-validation-for="Comment"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Add" class="btn btn-primary" />
+                                    </div>
                                 </div>`
                     })
 
