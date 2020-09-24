@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace TrustMeNews
 {
@@ -45,6 +46,18 @@ namespace TrustMeNews
                 sb.Append(number.ToString("X2"));
             }
             return sb.ToString();
+        }
+
+        public static bool Authenticate(string plainText, string referenceSalt, string referencePw)
+        {
+            string loginPw = ComputeSHA256Hash(referenceSalt, plainText);
+
+            if (loginPw == referencePw)
+            {
+                return true;
+            }
+
+            return false;
         }
 
     }

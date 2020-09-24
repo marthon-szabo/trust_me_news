@@ -28,6 +28,15 @@ namespace TrustMeNews
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.Cookie.Name = ".TMNews.Session";
+            }
+            );
             services.AddControllersWithViews();
             services.AddDbContextPool<TrustMeNewsDataContext>(
                 option =>
@@ -69,6 +78,8 @@ namespace TrustMeNews
             app.UseCors("http://localhost:3000");
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
