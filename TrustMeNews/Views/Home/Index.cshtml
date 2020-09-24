@@ -6,6 +6,10 @@
 }
 
 <div class="articles" style="padding-top: 70px">
+    @if (ViewData["sessionId"] != null)
+    {
+        <h1>@ViewData["sessionId"]</h1>
+    }
 
     @foreach (Result article in Model)
     {

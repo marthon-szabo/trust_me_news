@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -57,7 +58,13 @@ namespace TrustMeNews.Controllers
             }
             else if (Hasher.Authenticate(pw, user.Salt, user.Password))
             {
-                return RedirectToAction("Index", "Home", true);
+                string sessionId = new Guid().ToString();
+                user.SessionId = sessionId;
+                
+                await _context.SaveChangesAsync();
+                HttpContext.Session.SetString("sessionId", sessionId);
+                
+                return RedirectToAction("Index", "Home", new { user = $"{user.UserName}" });
             }
 
             return View();
