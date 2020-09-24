@@ -22,7 +22,7 @@ namespace TrustMeNews
         public static User GetUser(string sessionId)
         {
             User? toReturn = _context.Users
-                .FirstOrDefault(u => u.SessionId == sessionId);
+                .FirstOrDefault(u => u.SessionId.Equals(sessionId));
             return toReturn;
         }
     }

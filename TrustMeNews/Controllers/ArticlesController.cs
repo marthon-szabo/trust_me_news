@@ -40,7 +40,7 @@ namespace TrustMeNews.Controllers
             }
             
 
-            User user = SessionValidator.GetUser(sessionId);
+            User? user = SessionValidator.GetUser(sessionId);
             return user.UserName;
         }
 
