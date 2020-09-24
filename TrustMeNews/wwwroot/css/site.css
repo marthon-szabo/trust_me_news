@@ -30,6 +30,10 @@ for details on configuring this project to bundle and minify static web assets. 
         background-color: black;
     }
 
+.col-md-4 {
+    margin-inline-start: 32%;
+}
+
 .form-group {
     text-align: center;
 }
@@ -59,7 +63,7 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 .navbar {
-    border-bottom-color: black;
+    border-bottom: grey;
 }
 
 
@@ -184,6 +188,10 @@ a {
     a:hover {
         color: black;
     }
+
+.hover:hover {
+    color:white;
+}
 
 .btn-primary {
     color: #fff;
