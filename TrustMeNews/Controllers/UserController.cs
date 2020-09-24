@@ -207,6 +207,8 @@ namespace TrustMeNews.Controllers
         [HttpPost]
         public async Task<IActionResult> AddArticle(string articleId, string userId)
         {
+
+
             return View();
         }
 
