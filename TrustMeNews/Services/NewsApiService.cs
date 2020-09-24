@@ -50,15 +50,6 @@ namespace TrustMeNews.Services
 
         public async Task<IEnumerable<Genre>> SendGenreRequest(string path)
         {
-
-            var root = SendRequestBasics(path);
-            return root.response.results;
-        }
-
-        // refactor
-
-        public GenreRoot SendRequestBasics(string path)
-        {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(path);
             GenreRoot root = null;
@@ -71,7 +62,7 @@ namespace TrustMeNews.Services
 
             httpClient.Dispose();
 
-            return root;
+            return root.response.results;
         }
     }
 }
