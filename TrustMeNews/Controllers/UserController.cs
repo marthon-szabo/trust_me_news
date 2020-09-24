@@ -58,7 +58,7 @@ namespace TrustMeNews.Controllers
             }
             else
             {
-                Response.Redirect("Home/Index", true);
+                return RedirectToAction("Index", "Home", true);
             }
 
             return View();
