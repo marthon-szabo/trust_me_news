@@ -28,22 +28,18 @@ namespace TrustMeNews.Controllers
         
         public async Task<IActionResult> Index(string? user)
         {
-            if (user != null)
+            string? sessionId = HttpContext.Session.GetString("sessionId");
+            if (sessionId != null)
             {
                 User current_user = await _context.Users
-                    .FirstOrDefaultAsync(u => u.UserName.Equals(user));
-                string sessionId = HttpContext.Session.GetString("sessionId");
-                
-                if (!current_user.SessionId.Equals(sessionId))
-                {
-                    throw new InvalidDataContractException();
-                }
+                    .FirstOrDefaultAsync(u => u.SessionId.Equals(sessionId));
                 
                 ViewData["sessionId"] = sessionId;
+                ViewData["username"] = current_user.UserName;
             }
 
             newsApiService = new NewsApiService();
-            string apiKey = "https://content.guardianapis.com/search?api-key=d0bd9a0e-8101-4525-8604-4ad01023d10c&order-by=newest&show-fields=all&page-size=6";
+            string apiKey = "https://content.guardianapis.com/search?api-key=d0bd9a0e-8101-4525-8604-4ad01023d10c&order-by=newest&show-fields=all&page-size=8";
             var model = newsApiService.SendRequest(apiKey).GetAwaiter().GetResult();
             return View(model);
         }

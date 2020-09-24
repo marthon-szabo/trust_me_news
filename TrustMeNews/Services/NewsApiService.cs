@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using TrustMeNews.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TrustMeNews.Services
 {
@@ -21,10 +25,11 @@ namespace TrustMeNews.Services
             httpClient.BaseAddress = new Uri(path);
             Root root = null;
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(path).Result;
-
+            
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 root = await httpResponseMessage.Content.ReadAsAsync<Root>();
+
             }
 
             httpClient.Dispose();

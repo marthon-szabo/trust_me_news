@@ -55,6 +55,8 @@
     }
 
     getArticle() {
+        
+        this.getUser()
         this.document.querySelectorAll(".article").forEach((article) => {
             article.addEventListener("dblclick", () => {
                 var articleId = article.id;
@@ -84,6 +86,17 @@
 
             })
         })
+    }
+
+    getUser() {
+        let username = "";
+        fetch(`https://localhost:44313/get-user`, {
+
+            method: "get"
+        })
+            .then((resp) => console.log(resp))
+
+        console.log(username);
     }
 
 }
