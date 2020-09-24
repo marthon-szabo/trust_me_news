@@ -59,7 +59,7 @@ namespace TrustMeNews.Controllers
             }
             else
             {
-                string sessionId = new Guid().ToString();
+                string sessionId = Guid.NewGuid().ToString();
                 user.SessionId = sessionId;
                 
                 await _context.SaveChangesAsync();
