@@ -3,19 +3,21 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrustMeNews.Data;
 
 namespace TrustMeNews.Migrations
 {
     [DbContext(typeof(TrustMeNewsDataContext))]
-    partial class TrustMeNewsDataContextModelSnapshot : ModelSnapshot
+    [Migration("20200922111253_TMNewsDb")]
+    partial class TMNewsDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.8")
+                .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -26,15 +28,15 @@ namespace TrustMeNews.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("Comment")
+                        .HasColumnType("int");
+
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
                     b.HasKey("CommentId");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("Comment");
 
                     b.ToTable("Comments");
                 });
@@ -72,7 +74,7 @@ namespace TrustMeNews.Migrations
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int?>("Result")
                         .HasColumnType("int");
 
                     b.Property<string>("fieldsheadline")
@@ -95,7 +97,7 @@ namespace TrustMeNews.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("Result");
 
                     b.HasIndex("fieldsheadline");
 
@@ -115,12 +117,6 @@ namespace TrustMeNews.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Salt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SessionId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -128,31 +124,20 @@ namespace TrustMeNews.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = 1,
-                            Email = "dolla@bigmoney.cash",
-                            Password = "money",
-                            UserName = "Dolla$ign"
-                        });
                 });
 
             modelBuilder.Entity("TrustMeNews.Models.Comment", b =>
                 {
                     b.HasOne("TrustMeNews.Models.User", "User")
                         .WithMany("Comments")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Comment");
                 });
 
             modelBuilder.Entity("TrustMeNews.Models.Result", b =>
                 {
                     b.HasOne("TrustMeNews.Models.User", "User")
                         .WithMany("Articles")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("Result");
 
                     b.HasOne("TrustMeNews.Models.Field", "fields")
                         .WithMany()

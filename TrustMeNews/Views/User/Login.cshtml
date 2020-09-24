@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="center background-light dark" style="padding-top: 10%">
+    @if (ViewData["Message"].Equals("invalid"))
+    {
+        <p style="color: red"><b>Invalid username/email or password!</b></p>
+    }
+    <h1>Login</h1>
+    <form action="Login" method="post">
+        <input name="unameInp" placeholder="Username or Email" />
+        <input name="pw" placeholder="Password" type="password" />
+        <input class="buttton" name="loginBtn" type="submit" value="Login" />
+    </form>
+    <h1/>
+    <div>
+        <a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
+    </div>
+</div>
+

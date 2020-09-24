@@ -12,7 +12,6 @@ using Microsoft.Extensions.Hosting;
 using TrustMeNews.Services;
 using Microsoft.EntityFrameworkCore;
 using TrustMeNews.Data;
-using TrustMeNews.Models;
 
 namespace TrustMeNews
 {
@@ -29,11 +28,21 @@ namespace TrustMeNews
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<TrustMeNewsDataContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("TrustMeNewsContext"))
-                );
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.Cookie.Name = ".TMNews.Session";
+            }
+            );
             services.AddControllersWithViews();
+            services.AddDbContextPool<TrustMeNewsDataContext>(
+                option =>
+                {
+                    option.UseSqlServer(Configuration.GetConnectionString("TrustMeNewsContext"));
+            });
             services.AddSingleton<INewsApi, NewsApiService>();
             services.AddControllers();
             services.AddCors(options =>
@@ -69,6 +78,8 @@ namespace TrustMeNews
             app.UseCors("http://localhost:3000");
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

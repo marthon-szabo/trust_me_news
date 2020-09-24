@@ -6,7 +6,7 @@ using TrustMeNews.Data;
 
 namespace TrustMeNews.Models
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : IRepository<User>
     {
         private readonly TrustMeNewsDataContext dbContext;
 
@@ -15,14 +15,14 @@ namespace TrustMeNews.Models
             this.dbContext = dbContext;
         }
 
-        public User CreateUser(User user)
+        public User Create(User model)
         {
-            dbContext.Users.Add(user);
+            dbContext.Users.Add(model);
             dbContext.SaveChanges();
-            return user;
+            return model;
         }
 
-        public User DeleteUser(int id)
+        public User Delete(int id)
         {
             User toRemove = dbContext.Users.Find(id);
 
@@ -35,17 +35,17 @@ namespace TrustMeNews.Models
             return toRemove;
         }
 
-        public IEnumerable<User> GetAllUsers()
+        public IEnumerable<User> GetAll()
         {
             return dbContext.Users;
         }
 
-        public User GetEmployee(int id)
+        public User Get(int id)
         {
             return dbContext.Users.Find(id);
         }
 
-        public User UpdateUser(User userChanges)
+        public User Update(User userChanges)
         {
             var user = dbContext.Users.Attach(userChanges);
             user.State = Microsoft.EntityFrameworkCore.EntityState.Modified;

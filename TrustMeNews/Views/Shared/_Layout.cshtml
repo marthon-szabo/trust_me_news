@@ -12,23 +12,25 @@
     <title>@ViewData["Title"] - TrustMeNews</title>
     <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSfbB22iIRsPNEXcAqUTKFVdlPIn3_HN4Z2MQ&usqp=CAU" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script type="text/javascript" src="~/js/site.js" defer></script>
     <script type="text/javascript" src="~/js/controller.js" defer></script>
     <script type="text/javascript" src="~/js/app.js" defer></script>
 </head>
-<body>
+<body class="background-light">
     <header>
         <nav class="navbar position background-light" style="">
             <img class="bonnieclyde" src="~/bc.png" />
-            <a class="navbar-brand dark" asp-area="" asp-controller="Home" asp-action="Index">TrustMeNews</a>
+            <a class="navbar-brand hover dark" asp-area="" asp-controller="Home" asp-action="Index">TrustMeNews</a>
             <div class="container-fluid">
                 <ul class="nav navbar-nav" style="display:contents">
                     <li class="nav-item">
-                        <a class="nav-link dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link hover dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link hover dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
                     <li class="dropdown-menu-own">
                         <button class="dropbtn dark">Genres</button>
@@ -46,15 +48,19 @@
                 </ul>
             </div>
             <input id="inpSearch" placeholder="Search content" asp-controller="SearchBar" />
+            <div class="user-related">
+                <a class="hover dark" asp-area="" asp-controller="User" asp-action="Create">Register</a>
+                <a class="hover dark" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+            </div>
         </nav>
     </header>
     <div class="container-fl">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 background-light">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top background-light dark footer text-muted">
         <div class="container">
             &copy; 2020 - TrustMeNews - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

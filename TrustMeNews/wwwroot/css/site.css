@@ -9,6 +9,43 @@ for details on configuring this project to bundle and minify static web assets. 
     color: white;
 }
 
+.comment {
+    display: block;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.commenttext {
+    min-height: 150px;
+}
+
+.buttton {
+    color: white;
+    background-color: black;
+    border-color: darkgray;
+}
+
+    .buttton:hover {
+        color: indianred;
+        background-color: black;
+    }
+
+.col-md-4 {
+    margin-inline-start: 32%;
+}
+
+.form-group {
+    text-align: center;
+}
+/*
+.light:hover {
+    color: grey;
+}*/
+
+.center {
+    text-align: center;
+}
+
 .light-theme {
     background-color: #f1f1f1;
 }
@@ -25,6 +62,10 @@ for details on configuring this project to bundle and minify static web assets. 
     background-color: white;
 }
 
+.navbar {
+    border-bottom: grey;
+}
+
 
 a.navbar-brand {
     text-align: center;
@@ -35,7 +76,6 @@ a.navbar-brand {
 
 .one-article {
     text-align: center;
-    background: darkgrey;
 }
 
 .article-body {
@@ -149,6 +189,10 @@ a {
         color: black;
     }
 
+.hover:hover {
+    color:white;
+}
+
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
@@ -210,3 +254,6 @@ body {
     line-height: 60px; /* Vertically center the text there */
 }
 
+@media {
+
+}

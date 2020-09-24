@@ -1,18 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TrustMeNews.Models
 {
+
     public class Comment
     {
         [Key]
         public int CommentId { get; set; }
 
-        [Required]
-        public string Text { get; set; }
+        
+        public string Content { get; set; }
 
-        [ForeignKey("UserId")]
+        [ForeignKey("User")]
         public int UserID { get; set; }
 
+        public User User { get; set; }
     }
 }

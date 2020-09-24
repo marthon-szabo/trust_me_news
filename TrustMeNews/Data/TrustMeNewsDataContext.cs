@@ -9,15 +9,36 @@ namespace TrustMeNews.Data
 {
     public class TrustMeNewsDataContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
-
-        public DbSet<Comment> MyProperty { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public TrustMeNewsDataContext(DbContextOptions<TrustMeNewsDataContext> options)
+            : base(options)
         {
-            base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;" +
-                "Initial Category");
+
+        }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Result> Articles { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasMany(user => user.Articles)
+                .WithOne(article => article.User);
+
+            modelBuilder.Entity<User>()
+                .HasMany(user => user.Comments)
+                .WithOne(comment => comment.User);
+
+            modelBuilder.Entity<User>().HasData(
+                    new User
+                    {
+                        UserId = 1,
+                        UserName = "Dolla$ign",
+                        Email = "dolla@bigmoney.cash",
+                        Password = "money"
+                    }
+                );
+           
         }
     }
 }

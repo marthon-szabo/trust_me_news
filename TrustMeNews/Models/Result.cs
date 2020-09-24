@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 using System.Text.Json;
 
 namespace TrustMeNews.Models
@@ -7,15 +9,18 @@ namespace TrustMeNews.Models
     public class Result
     {
         //ARTICLE
-
+        [Key]
         public string id { get; set; }
         public string type { get; set; }
         public string sectionId { get; set; }
         public string sectionName { get; set; }
         public DateTime webPublicationDate { get; set; }
         public string webTitle { get; set; }
+        public User User { get; set; }
 
+        
         public Field fields { get; set; }
+
 
         public override string ToString() => JsonSerializer.Serialize<Result>(this);
     }
