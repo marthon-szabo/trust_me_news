@@ -1,6 +1,9 @@
 ﻿@using TrustMeNews.Services
 @using Microsoft.AspNetCore.Http;
+
 @{
+    //no context like this should be on cshtml - get it from @model IEnumerable<TrustMeNews.Models.Genre>; - right now it also returns Result
+    //the apikey is different, so a new request needed in the newsapiservice because now we can only use the one what returns Result
     NewsApiService newsApiService = new NewsApiService();
     string genreApiKey = $"https://content.guardianapis.com/sections?{NewsApiService.API_KEY}";
 }

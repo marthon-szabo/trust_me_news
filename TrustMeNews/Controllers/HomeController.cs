@@ -39,6 +39,8 @@ namespace TrustMeNews.Controllers
             }
 
             newsApiService = new NewsApiService();
+
+            //{NewsApiService.API_KEY} does not work here
             string apiKey = "https://content.guardianapis.com/search?api-key=d0bd9a0e-8101-4525-8604-4ad01023d10c&order-by=newest&show-fields=all&page-size=8";
             var model = newsApiService.SendRequest(apiKey).GetAwaiter().GetResult();
             return View(model);
