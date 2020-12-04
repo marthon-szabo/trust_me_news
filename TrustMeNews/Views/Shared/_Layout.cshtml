@@ -1,41 +1,69 @@
-﻿<!DOCTYPE html>
+﻿@using TrustMeNews.Services
+@using Microsoft.AspNetCore.Http;
+
+@{
+    //no context like this should be on cshtml - get it from @model IEnumerable<TrustMeNews.Models.Genre>; - right now it also returns Result
+    //the apikey is different, so a new request needed in the newsapiservice because now we can only use the one what returns Result
+    NewsApiService newsApiService = new NewsApiService();
+    string genreApiKey = $"https://content.guardianapis.com/sections?{NewsApiService.API_KEY}";
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TrustMeNews</title>
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSfbB22iIRsPNEXcAqUTKFVdlPIn3_HN4Z2MQ&usqp=CAU" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script type="text/javascript" src="~/js/site.js" defer></script>
+    <script type="text/javascript" src="~/js/controller.js" defer></script>
+    <script type="text/javascript" src="~/js/app.js" defer></script>
 </head>
-<body>
+<body class="background-light">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TrustMeNews</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+        <nav class="navbar position background-light" style="">
+            <img class="bonnieclyde" src="~/bc.png" />
+            <a class="navbar-brand hover dark" asp-area="" asp-controller="Home" asp-action="Index">TrustMeNews</a>
+            <div class="container-fluid">
+                <ul class="nav navbar-nav" style="display:contents">
+                    <li class="nav-item">
+                        <a class="nav-link hover dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hover dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                    <li class="dropdown-menu-own">
+                        <button class="dropbtn dark">Genres</button>
+                        <div class="dropdown-content">
+                            @foreach (Genre genre in newsApiService.SendGenreRequest(genreApiKey).GetAwaiter().GetResult())
+                            {
+                                <a class="genre light-theme" id="@genre.id">@genre.webTitle</a>
+                            }
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <button class="darktheme">DARK</button>
+                        <button class="lighttheme">LIGHT</button>
+                    </li>
+                </ul>
+            </div>
+            <input id="inpSearch" placeholder="Search content" asp-controller="SearchBar" />
+            <div class="user-related">
+                @RenderSection("loginField", required: false)
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container-fl">
+        <main role="main" class="pb-3 background-light">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top background-light dark footer text-muted">
         <div class="container">
             &copy; 2020 - TrustMeNews - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

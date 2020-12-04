@@ -1,0 +1,51 @@
+﻿@model TrustMeNews.Models.User
+
+
+@section loginField {
+    @if (ViewData["sessionId"] == null)
+    {
+        <a class="hover dark" asp-area="" asp-controller="User" asp-action="Create">Register</a>
+        <a class="hover dark" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+    }
+    else
+    {
+        <h1>@ViewData["username"]</h1>
+    }
+
+}
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="center background-light dark" style="padding-top: 10%">
+
+    <h1>Registration</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                @*<div class="g-recaptcha" data-sitekey="6LeW288ZAAAAAJHQYzXdP5WMQnf4LlHeqnkeLD2e"></div>*@
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn buttton" />
+                    <a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
