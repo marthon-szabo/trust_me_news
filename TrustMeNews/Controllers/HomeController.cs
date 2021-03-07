@@ -25,7 +25,6 @@ namespace TrustMeNews.Controllers
             this.newsApiService = newsApiService;
         }
 
-        
         public async Task<IActionResult> Index(string? user)
         {
             string? sessionId = HttpContext.Session.GetString("sessionId");
